@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,15 +20,12 @@ void main() async {
   FirebaseFirestore.instance.settings = Settings(
     persistenceEnabled: true,
   );
-  debugPrint = (String? message, {int? wrapWidth}) {
-    if (kDebugMode) {
-      debugPrintSynchronously(message, wrapWidth: wrapWidth);
-    }
-  };
   Bloc.observer = BlocObserverServices();
   setupGetIt();
-  runApp(BlocProvider(
+  runApp(
+    BlocProvider(
           create: (_) => ThemeCubit(),
           child: const ShopX(),
-      ),);
+      ),
+  );
 }

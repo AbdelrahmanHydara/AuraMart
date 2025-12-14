@@ -11,7 +11,7 @@ class RegisterButtonOnLoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButtonAuth(
-      text: "Go To Register",
+      text: "Create an Account",
       onPressed: () => context.pushReplacementNamed(Routes.registerScreen),
     );
   }
