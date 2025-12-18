@@ -8,8 +8,8 @@ import 'package:shopx/core/theme/app_colors.dart';
 import 'package:shopx/core/theme/logic/theme_cubit.dart';
 import 'package:shopx/features/home/screens/home_screen.dart';
 
-class TopAppBar extends StatelessWidget {
-  const TopAppBar({super.key,});
+class HomeTopAppBar extends StatelessWidget {
+  const HomeTopAppBar({super.key,});
 
   @override
   Widget build(BuildContext context) {

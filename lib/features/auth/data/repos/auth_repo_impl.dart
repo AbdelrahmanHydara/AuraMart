@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shopx/core/constants/end_point.dart';
+import 'package:shopx/core/constants/app_end_point.dart';
 import 'package:shopx/core/errors/exceptions.dart';
 import 'package:shopx/core/errors/failures.dart';
 import 'package:shopx/core/services/database_services.dart';
@@ -87,7 +87,7 @@ class AuthRepoImpl implements AuthRepo {
       var userEntity = UserModel.fromFirebaseUser(user);
       var isUserExist = await databaseServices.checkDataExists(
           docId: user.uid,
-          path: EndPoint.isUserExists,
+          path: AppEndPoint.isUserExists,
       );
       if(isUserExist) {
         await getUserFromDatabase(uid: user.uid);
@@ -159,7 +159,7 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future addUserToDatabase({required UserEntity user}) async {
     await databaseServices.addData(
-      path: EndPoint.addUserToDatabase,
+      path: AppEndPoint.addUserToDatabase,
       data: user.toMap(),
       docId: user.uId,
     );
@@ -168,7 +168,7 @@ class AuthRepoImpl implements AuthRepo {
   // Get User from Database
   @override
   Future<UserEntity> getUserFromDatabase({required String uid}) async {
-   var getUser = await databaseServices.getData(docId: uid, path: EndPoint.getUserFromDatabase);
+   var getUser = await databaseServices.getData(docId: uid, path: AppEndPoint.getUserFromDatabase);
    return UserModel.formJson(getUser);
   }
 }

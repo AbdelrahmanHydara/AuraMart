@@ -4,6 +4,8 @@ import 'database_services.dart';
 class FireStoreServices implements DatabaseServices {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
+
+
   // Add Data to Database
   @override
   Future<void> addData({
@@ -18,15 +20,43 @@ class FireStoreServices implements DatabaseServices {
     }
   }
 
+
+
   // Get Data from Database
   @override
-  Future<Map<String, dynamic>> getData({
-    required String docId,
+  Future<dynamic> getData({
+    String? docId,
+    Map<String, dynamic>? query,
     required String path,
   }) async {
-    var data = await firestore.collection(path).doc(docId).get();
-    return data.data() as Map<String, dynamic>;
+    try {
+      if (docId != null) {
+        var data = await firestore.collection(path).doc(docId).get();
+        return data.data() ?? {};
+      } else {
+        Query<Map<String, dynamic>> collectionRef = firestore.collection(path);
+        if (query != null) {
+          if (query["orderBy"] != null) {
+            var orderByField = query["orderBy"];
+            var descending = query["descending"] == true;
+            collectionRef = collectionRef.orderBy(orderByField, descending: descending);
+          }
+          if (query['limit'] != null) {
+            collectionRef = collectionRef.limit(query['limit']);
+          }
+        }
+        var snapshot = await collectionRef.get();
+        if (snapshot.docs.isEmpty) return <Map<String, dynamic>>[];
+
+        return snapshot.docs.map((doc) => doc.data()).toList();
+      }
+    } catch (e) {
+      return <Map<String, dynamic>>[];
+    }
   }
+
+
+
 
   // Check Data Exists in Database
   @override
