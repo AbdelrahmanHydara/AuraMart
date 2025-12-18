@@ -6,8 +6,8 @@ import 'package:shopx/core/constants/categories_constants.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/core/theme/app_colors.dart';
 
-class CategoryRoundedWidget extends StatelessWidget {
-  const CategoryRoundedWidget({super.key,});
+class HomeCategoryRoundedWidget extends StatelessWidget {
+  const HomeCategoryRoundedWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,7 @@ class CategoryRoundedWidget extends StatelessWidget {
           autoPlayCurve: Curves.easeIn,
           enableInfiniteScroll: true,
           scrollPhysics: const NeverScrollableScrollPhysics(),
-          autoPlayAnimationDuration: const Duration(
-              milliseconds: 800,
-          ),
+          autoPlayAnimationDuration: const Duration(milliseconds: 800),
         ),
         itemBuilder: (BuildContext context, int index, int pageViewIndex) {
           return GestureDetector(
@@ -41,9 +39,7 @@ class CategoryRoundedWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 12.w,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 12.w),
                   child: Container(
                     width: 60.w,
                     height: 60.h,

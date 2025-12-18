@@ -1,4 +1,3 @@
-
 abstract class DatabaseServices {
 
   // Add Data to Database
@@ -9,8 +8,9 @@ abstract class DatabaseServices {
   });
 
   // Get Data from Database
-  Future<Map<String, dynamic>> getData({
-    required String docId,
+  Future<dynamic> getData({
+    String? docId,
+    Map<String, dynamic>? query,
     required String path,
   });
 

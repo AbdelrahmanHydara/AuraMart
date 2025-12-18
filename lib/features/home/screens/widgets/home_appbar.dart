@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/core/theme/app_colors.dart';
 import 'package:shopx/features/home/screens/widgets/home_categories_appbar.dart';
-import 'package:shopx/features/home/screens/widgets/search_appbar.dart';
-import 'package:shopx/features/home/screens/widgets/top_appbar.dart';
+import 'package:shopx/features/home/screens/widgets/home_search_appbar.dart';
+import 'package:shopx/features/home/screens/widgets/home_top_appbar.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -26,9 +26,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const TopAppBar(),
+          const HomeTopAppBar(),
           verticalSpace(12),
-          const SearchAppBar(),
+          const HomeSearchAppBar(),
           verticalSpace(16),
           const HomeCategoriesAppBar(),
         ],

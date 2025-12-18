@@ -25,7 +25,7 @@ class ListName extends StatelessWidget {
           const Spacer(),
           TextWidgets.bodyText3(
               "See all",
-              fontSize: 16.sp,
+              fontSize: 12.sp,
               color: Colors.green.shade800,
               fontWeight: FontWeight.w900,
           ),
