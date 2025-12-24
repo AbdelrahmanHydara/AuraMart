@@ -15,14 +15,25 @@ class HomeSearchAppBar extends StatefulWidget {
 }
 
 class _HomeSearchAppBarState extends State<HomeSearchAppBar> {
-  final List<String> _categories = ["Games", "Phones", "AirPods", "Laptops"];
+  final List<String> _categories = [
+    "Games",
+    "Phones",
+    "AirPods",
+    "Laptops",
+    "Cameras",
+    "Watches",
+    "Clothes",
+    "Accessories",
+    "Tools",
+    "Drones",
+  ];
   int _currentIndex = 0;
   Timer? _timer;
 
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
       if (mounted) {
         setState(() {
           _currentIndex = (_currentIndex + 1) % _categories.length;
@@ -56,36 +67,9 @@ class _HomeSearchAppBarState extends State<HomeSearchAppBar> {
               child: Icon(CupertinoIcons.search, size: 18),
             ),
             Text(
-              "Search for ",
+              "Search for ${_categories[_currentIndex]}",
               style: AppTextStyles.regular14.copyWith(
                 color: appColors.primaryColor.withAlpha(100),
-              ),
-            ),
-            Expanded(
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 500),
-                transitionBuilder: (Widget child, Animation<double> animation) {
-                  return FadeTransition(
-                    opacity: animation,
-                    child: SlideTransition(
-                      position: Tween<Offset>(
-                        begin: const Offset(0.0, 0.5),
-                        end: Offset.zero,
-                      ).animate(animation),
-                      child: child,
-                    ),
-                  );
-                },
-                child: Text(
-                  _categories[_currentIndex],
-                  key: ValueKey<String>(
-                    _categories[_currentIndex],
-                  ),
-                  style: AppTextStyles.regular14.copyWith(
-                    color: appColors.primaryColor.withAlpha(100),
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
               ),
             ),
           ],

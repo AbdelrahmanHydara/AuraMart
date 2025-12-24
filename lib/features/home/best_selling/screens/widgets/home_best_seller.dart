@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/entity/products_entity.dart';
-import 'package:shopx/features/home/screens/widgets/product_card.dart';
+import 'package:shopx/features/home/home/screens/widgets/product_card.dart';
 
 class HomeBestSeller extends StatelessWidget {
   const HomeBestSeller({
