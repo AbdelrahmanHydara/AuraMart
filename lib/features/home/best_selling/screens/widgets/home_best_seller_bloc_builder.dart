@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopx/core/helpers/get_dummy_product.dart';
 import 'package:shopx/features/home/best_selling/cubit/best_selling_products_cubit.dart';
+import 'package:shopx/features/home/best_selling/screens/widgets/home_best_seller.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'home_best_seller.dart';
 
 class HomeBestSellerBlocBuilder extends StatelessWidget {
   const HomeBestSellerBlocBuilder({super.key});

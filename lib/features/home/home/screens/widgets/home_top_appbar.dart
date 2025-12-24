@@ -6,7 +6,7 @@ import 'package:shopx/core/components/custom_text.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/core/theme/app_colors.dart';
 import 'package:shopx/core/theme/logic/theme_cubit.dart';
-import 'package:shopx/features/home/screens/home_screen.dart';
+import 'package:shopx/features/home/home/screens/home_screen.dart';
 
 class HomeTopAppBar extends StatelessWidget {
   const HomeTopAppBar({super.key,});

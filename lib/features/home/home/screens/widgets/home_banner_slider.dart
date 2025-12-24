@@ -30,13 +30,13 @@ class _HomeBannerSliderState extends State<HomeBannerSlider> {
     return Skeletonizer(
       enabled: _enabled,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 14.w),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: CarouselSlider.builder(
           itemCount: AppConstants.bannerImages.length,
           options: CarouselOptions(
-            height: 100.h,
+            height: 90.h,
             enlargeCenterPage: true,
-            viewportFraction: 0.9,
+            viewportFraction: 1,
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 7),
             autoPlayAnimationDuration: const Duration(milliseconds: 800),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/entity/products_entity.dart';
+import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/features/home/home/screens/widgets/product_card.dart';
+import 'home_best_seller_and_see_all.dart';
 
 class HomeBestSeller extends StatelessWidget {
   const HomeBestSeller({
@@ -13,28 +15,36 @@ class HomeBestSeller extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 270.h,
+      height: 315.h,
       padding: EdgeInsets.symmetric(
         vertical: 10.h,
       ),
-      color: Colors.amber.withAlpha(450),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.zero,
-        physics: const BouncingScrollPhysics(),
-        child: Padding(
-          padding: EdgeInsets.only(
-              left: 10.w,
-          ),
-          child: Row(
-            children: List.generate(
-              products.length,
-                  (index) => ProductCard(
-                product: products[index],
+      color: Colors.amber.withAlpha(70),
+      child: Column(
+        children: [
+          const HomeBestSellerAndSeeAll(),
+          verticalSpace(10),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.zero,
+            physics: const BouncingScrollPhysics(),
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 10.w,
+              ),
+              child: Row(
+                children: List.generate(
+                  products.length,
+                      (index) => ProductCard(
+                        height: 255,
+                        colorDiscount: Colors.amber.shade700,
+                        product: products[index],
+                  ),
+                ),
               ),
             ),
           ),
-        ),
+        ]
       ),
     );
   }

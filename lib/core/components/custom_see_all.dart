@@ -4,9 +4,10 @@ import 'package:shopx/core/components/custom_text.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/core/theme/app_colors.dart';
 
-class ListName extends StatelessWidget {
-  const ListName({super.key, required this.text});
+class CustomSeeAll extends StatelessWidget {
+  const CustomSeeAll({super.key, required this.text, this.onTap});
   final String text;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +24,14 @@ class ListName extends StatelessWidget {
               color: appColors.primaryColor,
           ),
           const Spacer(),
-          TextWidgets.bodyText3(
-              "See all",
-              fontSize: 12.sp,
-              color: Colors.green.shade800,
-              fontWeight: FontWeight.w900,
+          GestureDetector(
+            onTap: onTap,
+            child: TextWidgets.bodyText3(
+                "See all",
+                fontSize: 13.sp,
+                color: Colors.blue,
+                fontWeight: FontWeight.w900,
+            ),
           ),
           horizontalSpace(5),
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopx/core/theme/app_colors.dart';
 
 class CustomText extends StatelessWidget {
   const CustomText({
@@ -42,13 +43,11 @@ class CustomText extends StatelessWidget {
       textAlign: textAlign,
       style: TextStyle(
         color: color,
-        fontFamily: 'Roboto',
         height: height,
         shadows: shadows,
         fontSize: fontSize,
         decoration: decoration,
         fontWeight: fontWeight,
-        decorationColor: color,
         wordSpacing: wordSpacing,
         letterSpacing: letterSpacing,
         decorationThickness: decorationThickness,
@@ -70,7 +69,7 @@ class TextWidgets {
       text: text,
       fontSize: fontSize ?? 22,
       fontWeight: fontWeight ?? FontWeight.w700,
-      color: color ?? Colors.white,
+      color: color ?? whiteColor,
     );
   }
 
@@ -84,7 +83,7 @@ class TextWidgets {
       }) {
     return CustomText(
       text: text,
-      color: color,
+      color: color ?? whiteColor,
       fontSize: fontSize ?? 20,
       fontWeight: fontWeight ?? FontWeight.w700,
       textAlign: textAlign,
@@ -102,7 +101,7 @@ class TextWidgets {
       }) {
     return CustomText(
       text: text,
-      color: color,
+      color: color ?? whiteColor,
       fontSize: fontSize ?? 18,
       fontWeight: fontWeight ?? FontWeight.w700,
       textAlign: textAlign,
@@ -120,7 +119,7 @@ class TextWidgets {
       }) {
     return CustomText(
       text: text,
-      color: color,
+      color: color ?? whiteColor,
       fontSize: fontSize ?? 16,
       fontWeight: fontWeight ?? FontWeight.w700,
       textAlign: textAlign,
@@ -139,7 +138,7 @@ class TextWidgets {
       }) {
     return CustomText(
       text: text,
-      color: color,
+      color: color ?? whiteColor,
       fontSize: fontSize ?? 12,
       fontWeight: fontWeight ?? FontWeight.w500,
       textAlign: textAlign,
@@ -162,7 +161,7 @@ class TextWidgets {
       }) {
     return CustomText(
       text: text,
-      color: color,
+      color: color ?? whiteColor,
       fontSize: fontSize ?? 12,
       fontWeight: fontWeight ?? FontWeight.w400,
       textAlign: textAlign,

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/components/custom_container.dart';
 import 'package:shopx/core/components/custom_text.dart';
 import 'package:shopx/core/constants/categories_constants.dart';
+import 'package:shopx/core/routing/routes.dart';
 
 class HomeCategoriesAppBar extends StatelessWidget {
   const HomeCategoriesAppBar({super.key,});
@@ -15,11 +16,11 @@ class HomeCategoriesAppBar extends StatelessWidget {
         children: List.generate(
           CategoriesConstants.categoriesList.length,
               (index) => GestureDetector(
-                // onTap: () => Navigator.pushNamed(
-                //   context,
-                //   // CategoryItems.routName,
-                //   arguments: text,
-                // ),
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  Routes.searchScreen,
+                  arguments: CategoriesConstants.categoriesList[index].name,
+                ),
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 2.w,
