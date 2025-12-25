@@ -5,8 +5,8 @@ import 'package:shopx/core/components/custom_divider.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/features/cart/cubit/cart_item_cubit.dart';
 import 'package:shopx/features/cart/entity/cart_item_entity.dart';
-import 'package:shopx/features/cart/screens/widgets/cart_item.dart';
 import 'cart_bottom_sheet.dart';
+import 'cart_item_bloc_builder.dart';
 
 class CartItemBody extends StatelessWidget {
   const CartItemBody({super.key, required this.cartItems});
@@ -26,7 +26,7 @@ class CartItemBody extends StatelessWidget {
           itemBuilder: (context, index) {
             return Column(
               children: [
-                CartItem(cartItemEntity: cartItems[index]),
+                CartItemBlocBuilder(cartItemEntity: cartItems[index]),
                 const CustomDivider(),
               ],
             );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/components/custom_text.dart';
+import 'package:shopx/core/constants/app_strings.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/core/theme/app_colors.dart';
 import 'package:shopx/core/theme/logic/theme_cubit.dart';
@@ -21,7 +22,7 @@ class HomeTopAppBar extends StatelessWidget {
       child: Row(
         children: [
           TextWidgets.heading(
-            "ShopX",
+            AppStrings.appName,
             color: appColors.primaryColor,
           ),
           const Spacer(),

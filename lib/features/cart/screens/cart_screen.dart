@@ -31,6 +31,7 @@ class CartScreen extends StatelessWidget {
           );
         },
         isDelete: true,
+        isCart: true,
         text: 'You Cart',
       ),
       body: const CartBodyScreen(),

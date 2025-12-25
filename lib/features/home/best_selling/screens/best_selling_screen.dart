@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopx/core/components/custom_app_bar.dart';
+import 'package:shopx/core/constants/app_strings.dart';
 import 'package:shopx/core/helpers/get_dummy_product.dart';
 import 'package:shopx/core/repos/products/products_repo.dart';
 import 'package:shopx/core/services/get_it_services.dart';
@@ -14,7 +15,9 @@ class BestSellingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(onDelete: () {}, text: 'Best Seller',),
+      appBar: CustomAppBar(
+        text: AppStrings.bestSeller,
+      ),
       body: BlocProvider(
         create: (context) =>
         BestSellingProductsCubit(

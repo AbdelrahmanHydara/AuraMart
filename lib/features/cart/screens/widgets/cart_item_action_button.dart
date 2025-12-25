@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/components/custom_container.dart';
+import 'package:shopx/core/theme/app_colors.dart';
 
 class CartItemActionButton extends StatelessWidget {
   const CartItemActionButton({
@@ -30,7 +31,7 @@ class CartItemActionButton extends StatelessWidget {
         child: FittedBox(
           child: Icon(
             icon,
-            color: Colors.white,
+            color: whiteColor,
           ),
         ),
       ),

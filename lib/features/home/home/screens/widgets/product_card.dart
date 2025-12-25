@@ -40,7 +40,7 @@ class ProductCard extends StatelessWidget {
     if (product.reviews.isEmpty) return 0;
     final total = product.reviews.fold<int>(
       0,
-          (sum, review) => sum + review.rating,
+      (sum, review) => sum + review.rating,
     );
     return total / product.reviews.length;
   }
@@ -66,7 +66,7 @@ class ProductCard extends StatelessWidget {
                   Expanded(
                     flex: 3,
                     child: CustomContainer(
-                      color: Colors.white,
+                      color: whiteColor,
                       width: double.infinity,
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(12.r),
@@ -103,8 +103,10 @@ class ProductCard extends StatelessWidget {
               top: 10,
               left: 8,
               child: Container(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: colorDiscount ?? Colors.red,
                   borderRadius: BorderRadius.circular(20),
@@ -113,7 +115,7 @@ class ProductCard extends StatelessWidget {
                   "${product.discount}% discount",
                   fontSize: 10,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: whiteColor,
                 ),
               ),
             ),
@@ -142,33 +144,26 @@ class ProductCard extends StatelessWidget {
             Positioned(
               bottom: 8,
               right: 8,
-              child: AddToCartBlocBuilder(
-                product: product,
-              ),
+              child: AddToCartBlocBuilder(product: product),
             ),
           if (showRating && averageRating > 0)
             Positioned(
               bottom: 8,
               left: 8,
               child: Container(
-                padding:
-                EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 4.h,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                 decoration: BoxDecoration(
                   color: Colors.black54,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.star,
-                        size: 12, color: Colors.amber),
+                    const Icon(Icons.star, size: 12, color: Colors.amber),
                     horizontalSpace(4),
                     TextWidgets.bodyText1(
                       averageRating.toStringAsFixed(1),
                       fontSize: 10,
-                      color: Colors.white,
+                      color: whiteColor,
                     ),
                   ],
                 ),
@@ -179,5 +174,3 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
-
-

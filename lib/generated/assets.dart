@@ -10,7 +10,6 @@ class Assets {
   static const String bannersBanner4 = 'assets/images/banners/banner4.gif';
   static const String categoriesAirPods = 'assets/images/categories/airPods.png';
   static const String categoriesCamera = 'assets/images/categories/camera.png';
-  static const String categoriesClothes = 'assets/images/categories/clothes.png';
   static const String categoriesDrones = 'assets/images/categories/drones.png';
   static const String categoriesElectronics = 'assets/images/categories/electronics.png';
   static const String categoriesIphone = 'assets/images/categories/iphone.png';

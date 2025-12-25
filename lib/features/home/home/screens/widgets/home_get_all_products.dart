@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/entity/products_entity.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/features/home/home/screens/widgets/product_card.dart';
+import 'package:shopx/generated/assets.dart';
 
 class HomeGetAllProducts extends StatelessWidget {
   const HomeGetAllProducts({
@@ -19,7 +20,7 @@ class HomeGetAllProducts extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset(
-            "assets/images/banners/banner.gif",
+            Assets.bannersBanner,
           ),
           verticalSpace(16),
           GridView.builder(

@@ -1,7 +1,9 @@
+import 'package:shopx/generated/assets.dart';
+
 class AppConstants {
   static List<String> bannerImages = [
-    "assets/images/banners/banner1.gif",
-    "assets/images/banners/banner2.gif",
-    "assets/images/banners/banner3.gif",
+    Assets.bannersBanner1,
+    Assets.bannersBanner2,
+    Assets.bannersBanner3,
   ];
 }

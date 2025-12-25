@@ -2,7 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/components/custom_text.dart';
-import 'package:shopx/core/constants/categories_constants.dart';
+import 'package:shopx/core/constants/app_strings.dart';
+import 'package:shopx/core/constants/app_categories_sections.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/core/theme/app_colors.dart';
 
@@ -18,16 +19,16 @@ class HomeCategoryRoundedWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14,),
+            padding: const EdgeInsets.symmetric(horizontal: 14),
             child: TextWidgets.heading(
-                "Categories",
-                fontSize: 20.sp,
-                color: appColors.primaryColor,
+              AppStrings.categories,
+              fontSize: 20.sp,
+              color: appColors.primaryColor,
             ),
           ),
           verticalSpace(16),
           CarouselSlider.builder(
-            itemCount: CategoriesConstants.categoriesList.length,
+            itemCount: AppCategoriesSections.categoriesList.length,
             disableGesture: true,
             options: CarouselOptions(
               height: 100.h,
@@ -62,7 +63,7 @@ class HomeCategoryRoundedWidget extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(300.r),
                           child: Image.asset(
-                            CategoriesConstants.categoriesList[index].image,
+                            AppCategoriesSections.categoriesList[index].image,
                             width: 60.w,
                             height: 60.h,
                           ),
@@ -71,7 +72,7 @@ class HomeCategoryRoundedWidget extends StatelessWidget {
                     ),
                     verticalSpace(15),
                     TextWidgets.bodyText1(
-                      CategoriesConstants.categoriesList[index].name,
+                      AppCategoriesSections.categoriesList[index].name,
                       fontSize: 12.sp,
                       color: appColors.primaryColor,
                       fontWeight: FontWeight.w500,

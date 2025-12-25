@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopx/core/theme/app_colors.dart';
+import 'package:shopx/generated/assets.dart';
 import 'custom_text.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -12,12 +13,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String text;
   final bool isCart;
   final bool isDelete;
-  final void Function() onDelete;
+  final void Function()? onDelete;
 
   const CustomAppBar({
     super.key,
-    required this.onDelete,
     required this.text,
+    this.onDelete,
     this.isCart = false,
     this.isDelete = false,
   }) : preferredSize = const Size.fromHeight(56);
@@ -44,7 +45,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           isCart
               ? SvgPicture.asset(
-                  "assets/svg/cart.svg",
+                  Assets.svgCart,
                   colorFilter: ColorFilter.mode(
                     appColors.primaryColor,
                     BlendMode.srcIn,

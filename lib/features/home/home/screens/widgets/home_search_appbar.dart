@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shopx/core/constants/app_categories_sections.dart';
 import 'package:shopx/core/helpers/extensions.dart';
 import 'package:shopx/core/routing/routes.dart';
 import 'package:shopx/core/theme/app_colors.dart';
@@ -15,18 +16,6 @@ class HomeSearchAppBar extends StatefulWidget {
 }
 
 class _HomeSearchAppBarState extends State<HomeSearchAppBar> {
-  final List<String> _categories = [
-    "Games",
-    "Phones",
-    "AirPods",
-    "Laptops",
-    "Cameras",
-    "Watches",
-    "Clothes",
-    "Accessories",
-    "Tools",
-    "Drones",
-  ];
   int _currentIndex = 0;
   Timer? _timer;
 
@@ -36,7 +25,9 @@ class _HomeSearchAppBarState extends State<HomeSearchAppBar> {
     _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
       if (mounted) {
         setState(() {
-          _currentIndex = (_currentIndex + 1) % _categories.length;
+          _currentIndex =
+              (_currentIndex + 1) %
+              AppCategoriesSections.categoriesList[_currentIndex].name.length;
         });
       }
     });
@@ -67,7 +58,7 @@ class _HomeSearchAppBarState extends State<HomeSearchAppBar> {
               child: Icon(CupertinoIcons.search, size: 18),
             ),
             Text(
-              "Search for ${_categories[_currentIndex]}",
+              "Search for ${AppCategoriesSections.categoriesList[_currentIndex].name}",
               style: AppTextStyles.regular14.copyWith(
                 color: appColors.primaryColor.withAlpha(100),
               ),
