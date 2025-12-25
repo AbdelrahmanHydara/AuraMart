@@ -4,8 +4,6 @@ import 'database_services.dart';
 class FireStoreServices implements DatabaseServices {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-
-
   // Add Data to Database
   @override
   Future<void> addData({

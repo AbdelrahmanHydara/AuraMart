@@ -40,7 +40,6 @@ class AuthRepoImpl implements AuthRepo {
       await deleteUser(user);
       return Left(ServerFailure(e.message));
     } catch (e) {
-      print("Repository Catch: ${e.toString()}");
       await deleteUser(user);
       return Left(
         ServerFailure(
@@ -68,7 +67,6 @@ class AuthRepoImpl implements AuthRepo {
     } on CustomException catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
-      print("Repository Catch: ${e.toString()}");
       return Left(
         ServerFailure(
           "An unexpected error occurred during logout. Please Try again later.",
@@ -99,7 +97,6 @@ class AuthRepoImpl implements AuthRepo {
       await deleteUser(user);
       return Left(ServerFailure(e.message));
     } catch (e) {
-      print("Repository Catch: ${e.toString()}");
       await deleteUser(user);
       return Left(ServerFailure(""));
     }
@@ -119,7 +116,6 @@ class AuthRepoImpl implements AuthRepo {
       await deleteUser(user);
       return Left(ServerFailure(e.message));
     } catch (e) {
-      print("Repository Catch: ${e.toString()}");
       await deleteUser(user);
       return Left(
         ServerFailure(
@@ -137,7 +133,6 @@ class AuthRepoImpl implements AuthRepo {
       await firebaseAuthService.logoutUser();
       return right(unit);
     } catch (e) {
-      print("Repository Catch: ${e.toString()}");
       return Left(
         ServerFailure(
           "An unexpected error occurred during logout. Please Try again later.",

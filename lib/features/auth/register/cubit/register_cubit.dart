@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopx/features/auth/domain/entities/user_entity.dart';
 import 'package:shopx/features/auth/domain/repos/auth_repo.dart';
 part 'register_state.dart';

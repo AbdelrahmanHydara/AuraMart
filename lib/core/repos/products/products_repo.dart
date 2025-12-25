@@ -6,4 +6,6 @@ abstract class ProductsRepo {
   Future<Either<Failure,List<ProductsEntity>>> getAllProducts();
 
   Future<Either<Failure,List<ProductsEntity>>> getBestSellingProducts();
+
+  Future<Either<Failure,List<ProductsEntity>>> getLatestProducts();
 }
