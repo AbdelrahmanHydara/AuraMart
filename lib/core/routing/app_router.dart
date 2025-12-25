@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopx/features/auth/login/login_screen.dart';
 import 'package:shopx/features/auth/register/screens/register_screen.dart';
+import 'package:shopx/features/checkout/screens/checkout_screen.dart';
 import 'package:shopx/features/home/best_selling/screens/best_selling_screen.dart';
 import 'package:shopx/features/home/home/screens/home_screen.dart';
 import 'package:shopx/features/root_screen.dart';
@@ -22,6 +23,10 @@ class AppRouter {
       case Routes.bestSellingScreen:
         return MaterialPageRoute(
           builder: (_) => const BestSellingScreen(),
+        );
+      case Routes.checkoutScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CheckoutScreen(),
         );
       case Routes.searchScreen:
         return MaterialPageRoute(

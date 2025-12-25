@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shopx/core/theme/app_colors.dart';
 import 'custom_text.dart';
@@ -44,12 +45,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           isCart
               ? SvgPicture.asset(
                   "assets/svg/cart.svg",
-                  color: appColors.primaryColor,
-                  width: 30,
+                  colorFilter: ColorFilter.mode(
+                    appColors.primaryColor,
+                    BlendMode.srcIn,
+                  ),
+                  width: 30.w,
                 )
               : GestureDetector(
                   onTap: () => Navigator.pop(context),
-                  child: Icon(Icons.arrow_back_ios_new),
+                  child: Icon(CupertinoIcons.arrow_left_circle),
                 ),
           TextWidgets.heading(text, color: appColors.primaryColor),
           isDelete

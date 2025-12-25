@@ -6,6 +6,8 @@ class Routes {
 
   static const String bestSellingScreen = "/bestSellingScreen";
 
+  static const String checkoutScreen = "/checkoutScreen";
+
   static const String searchScreen = "/searchScreen";
 
   static const String loginScreen = "/loginScreen";

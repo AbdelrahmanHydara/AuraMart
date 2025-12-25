@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/components/custom_container.dart';
 import 'package:shopx/core/components/custom_text.dart';
+import 'package:shopx/core/helpers/extensions.dart';
 import 'package:shopx/core/helpers/spacing.dart';
+import 'package:shopx/core/routing/routes.dart';
 import 'package:shopx/core/theme/app_colors.dart';
 import 'package:shopx/features/cart/cubit/cart_item_cubit.dart';
 import 'package:shopx/features/checkout/screens/checkout_screen.dart';
@@ -15,11 +17,7 @@ class CartBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const CheckoutScreen(),
-          )),
+      onTap: () => context.pushNamed(Routes.checkoutScreen),
       child: CustomContainer(
         color: blueColor,
         height: 60.h,
