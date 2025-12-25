@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shopx/core/theme/app_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopx/core/components/custom_glass_nav_bar.dart';
+import 'package:shopx/core/helpers/show_app_toast.dart';
 import 'package:shopx/features/cart/screens/cart_screen.dart';
-import 'home/screens/home_screen.dart';
+import 'cart/cubit/cart_item_cubit.dart';
+import 'home/home/screens/home_screen.dart';
 import 'profile/screens/profile_screen.dart';
 import 'search/screens/search_screen.dart';
 
@@ -14,130 +16,130 @@ class RootScreen extends StatefulWidget {
   State<RootScreen> createState() => _RootScreenState();
 }
 
-class _RootScreenState extends State<RootScreen> {
-  late PageController _pageController;
-  late List<Widget> _pages;
-  int _selectedIndex = 0;
+class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
+  late PageController controller;
+  late List<Widget> screens;
+  int currentScreen = 0;
+
+  late List<AnimationController> iconControllers;
 
   @override
   void initState() {
     super.initState();
-    _pages = const [
+    screens = const [
       HomeScreen(),
       SearchScreen(),
       CartScreen(),
       ProfileScreen(),
     ];
-    _pageController = PageController(initialPage: _selectedIndex);
+
+    controller = PageController(initialPage: 0);
+    iconControllers = List.generate(
+      4,
+      (index) => AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 300),
+      ),
+    );
+    iconControllers[currentScreen].forward();
+  }
+
+  void _onTabTapped(int index) {
+    setState(() => currentScreen = index);
+    controller.animateToPage(
+      index,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeOutExpo,
+    );
+    iconControllers[index].forward();
+    for (var i = 0; i < iconControllers.length; i++) {
+      if (i != index) iconControllers[i].reverse();
+    }
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    for (var c in iconControllers) {
+      c.dispose();
+    }
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      body: PageView(
-        controller: _pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        onPageChanged: (index) => setState(() => _selectedIndex = index),
-        children: _pages,
-      ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 18.w,
-          vertical: 12.h,
-        ),
-        child: Card(
-          elevation: 40,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(38.r),
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(38.r),
-            child: BottomNavigationBar(
-              currentIndex: _selectedIndex,
-              onTap: (index) {
-                setState(() => _selectedIndex = index);
-                _pageController.jumpToPage(index);
-              },
-              items: [
-                _buildNavItem(
-                  context,
-                  label: "Home",
-                  icon: CupertinoIcons.house,
-                  activeIcon: CupertinoIcons.house_fill,
-                  index: 0,
-                ),
-                _buildNavItem(
-                  context,
-                  label: "Search",
-                  icon: CupertinoIcons.search,
-                  activeIcon: Icons.manage_search,
-                  index: 1,
-                ),
-                _buildCartItem(context,
-                    index: 2,
-                ),
-                _buildNavItem(
-                  context,
-                  label: "Profile",
-                  icon: CupertinoIcons.person_alt_circle,
-                  activeIcon: CupertinoIcons.person_alt_circle_fill,
-                  index: 3,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  BottomNavigationBarItem _buildNavItem(
-      BuildContext context, {
-        required String label,
-        required IconData icon,
-        required IconData activeIcon,
-        required int index,
-      }) {
-    final bool isSelected = _selectedIndex == index;
-
-    return BottomNavigationBarItem(
-      label: label,
-      icon: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        child: Icon(
-          isSelected ? activeIcon : icon,
-          key: ValueKey(isSelected),
-        ),
-      ),
-    );
-  }
-
-  BottomNavigationBarItem _buildCartItem(BuildContext context,
-      {required int index}) {
-    final appColors = Theme.of(context).extension<AppColors>()!;
-    final bool isSelected = _selectedIndex == index;
-
-    return BottomNavigationBarItem(
-      label: "Cart",
-      icon: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 300),
-        child: Badge(
-          label: Text(
-              "5",
-              style: TextStyle(
-                  color: appColors.secondaryColor,
-                  fontSize: 11,
+    return PopScope(
+      canPop: false,
+      child: BlocProvider(
+        create: (context) => CartItemCubit(),
+        child: BlocListener<CartItemCubit, CartItemState>(
+          listener: (context, state) {
+            if (state is CartItemAdded) {
+              showAppToast(
+                message: 'Item added to cart',
+                bgColor: Colors.green,
+              );
+            }
+              if (state is CartItemRemoved) {
+                showAppToast(
+                  message: 'Item removed from cart',
+                  bgColor: Colors.red,
+                );
+              }
+              if (state is CartCleared) {
+                showAppToast(
+                  message: 'All items cleared from cart',
+                  bgColor: Colors.red,
+                );
+              }
+          },
+          child: Scaffold(
+              extendBody: true,
+              body: PageView(
+                controller: controller,
+                allowImplicitScrolling: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: screens,
               ),
-          ),
-          backgroundColor: Colors.red,
-          offset: const Offset(8, -8),
-          child: Icon(
-            isSelected
-                ? CupertinoIcons.cart_fill
-                : CupertinoIcons.cart,
-            key: ValueKey(isSelected),
-          ),
+              bottomNavigationBar: GlassBottomNavBar(
+                currentIndex: currentScreen,
+                onTap: _onTabTapped,
+                items: [
+                  BottomNavItemData(
+                    label: 'Home',
+                    icon: const Icon(CupertinoIcons.home),
+                    filledIcon: AnimatedIcon(
+                      icon: AnimatedIcons.menu_home,
+                      progress: iconControllers[0],
+                    ),
+                  ),
+                  BottomNavItemData(
+                    label: 'Cart',
+                    icon: const Icon(CupertinoIcons.cart),
+                    filledIcon: AnimatedIcon(
+                      icon: AnimatedIcons.view_list,
+                      progress: iconControllers[1],
+                    ),
+                  ),
+                  BottomNavItemData(
+                    label: 'History',
+                    icon: const Icon(Icons.table_bar_outlined),
+                    filledIcon: AnimatedIcon(
+                      icon: AnimatedIcons.list_view,
+                      progress: iconControllers[2],
+                    ),
+                  ),
+                  BottomNavItemData(
+                    label: 'Profile',
+                    icon: const Icon(CupertinoIcons.person_alt_circle),
+                    filledIcon: AnimatedIcon(
+                      icon: AnimatedIcons.arrow_menu,
+                      progress: iconControllers[3],
+                    ),
+                  ),
+                ],
+              ),
+            ),
         ),
       ),
     );

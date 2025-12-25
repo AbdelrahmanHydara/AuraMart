@@ -4,7 +4,7 @@ class ProductsEntity {
   final String code;
   final String name;
   final String description;
-  final double price;
+  final int price;
   final int quantity;
   final int? discount;
   final int? oldPrice;
@@ -26,4 +26,15 @@ class ProductsEntity {
     required this.quantity,
     required this.categoryId,
   });
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is ProductsEntity &&
+              runtimeType == other.runtimeType &&
+              code == other.code;
+
+  @override
+  int get hashCode => code.hashCode;
+
 }

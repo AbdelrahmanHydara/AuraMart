@@ -23,10 +23,6 @@ dependencies:
   carousel_slider: ^5.1.1
   # State management library that helps implement the BLoC (Business Logic Component) design pattern.
   flutter_bloc: ^9.1.1
-  # This client makes it simple for developers to build secure and scalable products.
-  supabase: ^2.10.0
-  # This package makes it simple for developers to build secure and scalable products.
-  supabase_flutter: ^2.10.3
   # Customize Flutter's default white native splash screen with background color and splash image. Supports dark mode, full screen, and more.
   flutter_native_splash: ^2.4.7
   # Package for easy use of images that are automatically cacheable and have a beautiful on the fly (but it can be configured) shimmer effect while loading.
@@ -42,21 +38,20 @@ dependencies:
   fluttertoast: ^9.0.0
   get_it: ^9.0.5
   dartz: ^0.10.1
-
+  flutter_svg: ^2.2.3
+  flutter_avif: ^2.2.0
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
   flutter_launcher_icons: "^0.14.4"
 
 flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/images/logo.png"
-  min_sdk_android: 21 # android min sdk min:16, default 21
-  flutter_test:
-    sdk: flutter
-
-
-  flutter_lints: ^5.0.0
+  min_sdk_android: 21
 
 flutter:
 
@@ -67,11 +62,5 @@ flutter:
     - assets/images/categories/
     - assets/images/banners/
     - assets/images/logos/
+    - assets/svg/
 
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic

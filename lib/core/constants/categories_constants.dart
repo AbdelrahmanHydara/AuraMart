@@ -26,16 +26,16 @@ class CategoriesConstants {
       image: "assets/images/categories/smartWatch.png",
       name: "Watches",
     ),
-    CategoriesModel(
-      id: "1",
-      image: "assets/images/categories/clothes.png",
-      name: "Clothes",
-    ),
-    CategoriesModel(
-      id: "1",
-      image: "assets/images/categories/electronics.png",
-      name: "Accessories",
-    ),
+    // CategoriesModel(
+    //   id: "1",
+    //   image: "assets/images/categories/clothes.png",
+    //   name: "Clothes",
+    // ),
+    // CategoriesModel(
+    //   id: "1",
+    //   image: "assets/images/categories/electronics.png",
+    //   name: "Accessories",
+    // ),
     CategoriesModel(
       id: "1",
       image: "assets/images/categories/tools.png",
