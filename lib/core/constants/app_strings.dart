@@ -15,5 +15,14 @@ class AppStrings {
   static const String bestSeller = 'Best Seller';
   static const String removeItem = 'Remove Item';
   static const String remove = 'Remove';
+  static const String removeThisItem = 'Do you want to remove this item from the cart ?';
+  static const String checkout = 'CHECKOUT';
+  static const String goToShopping = 'Go To Shopping';
+  static const String shopNow = 'Shop Now';
+  static const String waitingFor = 'What are you waiting for !!!';
+  static const String cartEmpty = 'Your Shopping cart looks empty.';
+
+
+
 
 }

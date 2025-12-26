@@ -15,7 +15,7 @@ class HomeBestSeller extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 315.h,
+      height: 300.h,
       padding: EdgeInsets.symmetric(
         vertical: 10.h,
       ),
@@ -36,7 +36,8 @@ class HomeBestSeller extends StatelessWidget {
                 children: List.generate(
                   products.length,
                       (index) => ProductCard(
-                        height: 255,
+                        height: 240,
+                        width: 160,
                         colorDiscount: Colors.amber.shade700,
                         product: products[index],
                   ),

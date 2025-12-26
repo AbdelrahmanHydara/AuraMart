@@ -76,4 +76,29 @@ class ProductsRepoImpl extends ProductsRepo {
       return left(ServerFailure("Failed to fetch latest products: $e"));
     }
   }
+
+  @override
+  Future<Either<Failure, List<ProductsEntity>>> getProductsByCategory({required String categoryName}) async {
+    try {
+      var data = await databaseServices.getData(
+        path: AppEndPoint.getAllProducts,
+        query: {
+          "where": {
+            "field": "category",
+            "value": categoryName,
+          },
+        },
+      );
+      if (data == null) {
+        return right([]);
+      }
+
+      final list = List<Map<String, dynamic>>.from(data);
+      List<ProductsEntity> products = list.map((e) => ProductsModel.fromJson(e).toEntity()).toList();
+
+      return right(products);
+    } catch (e) {
+      return left(ServerFailure("Failed to fetch category products: $e"));
+    }
+  }
 }

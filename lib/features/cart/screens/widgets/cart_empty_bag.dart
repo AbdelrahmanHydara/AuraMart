@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shopx/core/components/custom_button.dart';
 import 'package:shopx/core/components/custom_text.dart';
+import 'package:shopx/core/constants/app_strings.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/core/theme/app_colors.dart';
+import 'package:shopx/generated/assets.dart';
 
 class CartEmptyBag extends StatelessWidget {
   const CartEmptyBag({
@@ -39,15 +41,15 @@ class CartEmptyBag extends StatelessWidget {
             verticalSpace(30),
             Image.asset(
               isCart
-                  ? "assets/images/emptyCart.png"
-                  : "PhotoLink.emptyOrder",
+                  ? Assets.bagEmptyCart
+                  : "",
               height: 140,
             ),
             verticalSpace(30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: CustomButton(
-                text: "Go To Shopping",
+                text: AppStrings.goToShopping,
                 textColor: appColors.secondaryColor,
                 backgroundColor: appColors.primaryColor,
                 arrowColor: appColors.secondaryColor,

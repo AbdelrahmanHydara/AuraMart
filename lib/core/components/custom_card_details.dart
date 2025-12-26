@@ -5,10 +5,10 @@ import 'package:shopx/core/theme/app_colors.dart';
 import 'custom_text.dart';
 
 class CustomCardDetails extends StatelessWidget {
-  const CustomCardDetails({super.key, required this.name, required this.price, required this.oldPrice, required this.quantity,});
+  const CustomCardDetails({super.key, required this.name, required this.price, required this.oldPrice, required this.quantity, this.maxLinesName,});
 
   final String name;
-  final int? oldPrice;
+  final int? oldPrice, maxLinesName;
   final int price, quantity;
 
   @override
@@ -19,7 +19,7 @@ class CustomCardDetails extends StatelessWidget {
       children: [
         TextWidgets.bodyText1(
           name,
-          maxLines: 1,
+          maxLines: maxLinesName ?? 1,
           fontSize: 14.sp,
           overflow: TextOverflow.ellipsis,
           color: appColors.primaryColor,

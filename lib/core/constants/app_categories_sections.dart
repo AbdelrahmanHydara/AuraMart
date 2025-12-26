@@ -11,22 +11,22 @@ class AppCategoriesSections {
       name: AppStrings.cameras,
     ),
     CategoriesSectionsModel(
-      id: "1",
+      id: "2",
       image: Assets.categoriesIphone,
       name: AppStrings.phones,
     ),
     CategoriesSectionsModel(
-      id: "1",
+      id: "3",
       image: Assets.categoriesLaptop,
       name: AppStrings.laptops,
     ),
     CategoriesSectionsModel(
-      id: "1",
+      id: "4",
       image: Assets.categoriesAirPods,
       name: AppStrings.airPods,
     ),
     CategoriesSectionsModel(
-      id: "1",
+      id: "5",
       image: Assets.categoriesSmartWatch,
       name: AppStrings.watches,
     ),
@@ -36,21 +36,20 @@ class AppCategoriesSections {
     //   name: "Accessories",
     // ),
     CategoriesSectionsModel(
-      id: "1",
+      id: "6",
       image: Assets.categoriesTools,
       name: AppStrings.tools,
     ),
     CategoriesSectionsModel(
-      id: "1",
+      id: "7",
       image: Assets.categoriesDrones,
       name: AppStrings.drones,
     ),
     CategoriesSectionsModel(
-      id: "1",
+      id: "8",
       image: Assets.categoriesSport,
       name: AppStrings.sports,
     ),
   ];
-
 }
 

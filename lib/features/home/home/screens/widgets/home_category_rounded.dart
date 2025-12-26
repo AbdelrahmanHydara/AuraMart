@@ -6,6 +6,7 @@ import 'package:shopx/core/constants/app_strings.dart';
 import 'package:shopx/core/constants/app_categories_sections.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/core/theme/app_colors.dart';
+import 'package:shopx/features/home/category_products/screens/category_products_screen.dart';
 
 class HomeCategoryRoundedWidget extends StatelessWidget {
   const HomeCategoryRoundedWidget({super.key});
@@ -23,7 +24,7 @@ class HomeCategoryRoundedWidget extends StatelessWidget {
             child: TextWidgets.heading(
               AppStrings.categories,
               fontSize: 20.sp,
-              color: appColors.primaryColor,
+              color: whiteColor,
             ),
           ),
           verticalSpace(16),
@@ -43,11 +44,16 @@ class HomeCategoryRoundedWidget extends StatelessWidget {
             ),
             itemBuilder: (BuildContext context, int index, int pageViewIndex) {
               return GestureDetector(
-                // onTap: () => Navigator.pushNamed(
-                //   context,
-                //   CategoryItems.routName,
-                //   arguments: name,
-                // ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CategoryProductsScreen(
+                        categoryName: AppCategoriesSections.categoriesList[index].name,
+                      ),
+                    ),
+                  );
+                },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

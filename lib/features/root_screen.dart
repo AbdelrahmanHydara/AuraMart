@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopx/core/components/custom_glass_nav_bar.dart';
-import 'package:shopx/core/helpers/show_app_toast.dart';
 import 'package:shopx/features/cart/screens/cart_screen.dart';
-import 'cart/cubit/cart_item_cubit.dart';
 import 'home/home/screens/home_screen.dart';
 import 'profile/screens/profile_screen.dart';
 import 'search/screens/search_screen.dart';
@@ -26,7 +23,7 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    screens = const [
+    screens = [
       HomeScreen(),
       SearchScreen(),
       CartScreen(),
@@ -70,78 +67,53 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      child: BlocProvider(
-        create: (context) => CartItemCubit(),
-        child: BlocListener<CartItemCubit, CartItemState>(
-          listener: (context, state) {
-            if (state is CartItemAdded) {
-              showAppToast(
-                message: 'Item added to cart',
-                bgColor: Colors.green,
-              );
-            }
-              if (state is CartItemRemoved) {
-                showAppToast(
-                  message: 'Item removed from cart',
-                  bgColor: Colors.red,
-                );
-              }
-              if (state is CartCleared) {
-                showAppToast(
-                  message: 'All items cleared from cart',
-                  bgColor: Colors.red,
-                );
-              }
-          },
-          child: Scaffold(
-              extendBody: true,
-              body: PageView(
-                controller: controller,
-                allowImplicitScrolling: true,
-                physics: const NeverScrollableScrollPhysics(),
-                children: screens,
+      child: Scaffold(
+          extendBody: true,
+          body: PageView(
+            controller: controller,
+            allowImplicitScrolling: true,
+            physics: const NeverScrollableScrollPhysics(),
+            children: screens,
+          ),
+          bottomNavigationBar: GlassBottomNavBar(
+            currentIndex: currentScreen,
+            onTap: _onTabTapped,
+            items: [
+              BottomNavItemData(
+                label: 'Home',
+                icon: const Icon(CupertinoIcons.home),
+                filledIcon: AnimatedIcon(
+                  icon: AnimatedIcons.menu_home,
+                  progress: iconControllers[0],
+                ),
               ),
-              bottomNavigationBar: GlassBottomNavBar(
-                currentIndex: currentScreen,
-                onTap: _onTabTapped,
-                items: [
-                  BottomNavItemData(
-                    label: 'Home',
-                    icon: const Icon(CupertinoIcons.home),
-                    filledIcon: AnimatedIcon(
-                      icon: AnimatedIcons.menu_home,
-                      progress: iconControllers[0],
-                    ),
-                  ),
-                  BottomNavItemData(
-                    label: 'Cart',
-                    icon: const Icon(CupertinoIcons.cart),
-                    filledIcon: AnimatedIcon(
-                      icon: AnimatedIcons.view_list,
-                      progress: iconControllers[1],
-                    ),
-                  ),
-                  BottomNavItemData(
-                    label: 'History',
-                    icon: const Icon(Icons.table_bar_outlined),
-                    filledIcon: AnimatedIcon(
-                      icon: AnimatedIcons.list_view,
-                      progress: iconControllers[2],
-                    ),
-                  ),
-                  BottomNavItemData(
-                    label: 'Profile',
-                    icon: const Icon(CupertinoIcons.person_alt_circle),
-                    filledIcon: AnimatedIcon(
-                      icon: AnimatedIcons.arrow_menu,
-                      progress: iconControllers[3],
-                    ),
-                  ),
-                ],
+              BottomNavItemData(
+                label: 'Cart',
+                icon: const Icon(CupertinoIcons.cart),
+                filledIcon: AnimatedIcon(
+                  icon: AnimatedIcons.view_list,
+                  progress: iconControllers[1],
+                ),
               ),
-            ),
+              BottomNavItemData(
+                label: 'History',
+                icon: const Icon(Icons.table_bar_outlined),
+                filledIcon: AnimatedIcon(
+                  icon: AnimatedIcons.list_view,
+                  progress: iconControllers[2],
+                ),
+              ),
+              BottomNavItemData(
+                label: 'Profile',
+                icon: const Icon(CupertinoIcons.person_alt_circle),
+                filledIcon: AnimatedIcon(
+                  icon: AnimatedIcons.arrow_menu,
+                  progress: iconControllers[3],
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopx/core/constants/app_strings.dart';
 import 'cart_empty_bag.dart';
 
 class CartEmptyBagBody extends StatelessWidget {
@@ -8,9 +9,9 @@ class CartEmptyBagBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CartEmptyBag(
       isCart: true,
-      title: "Your Shopping cart looks empty.",
-      subTitle: "what are you waiting for !!!",
-      buttonTitle: "Shop Now",
+      title: AppStrings.cartEmpty,
+      subTitle: AppStrings.waitingFor,
+      buttonTitle: AppStrings.shopNow,
     );
   }
 }

@@ -17,4 +17,13 @@ class GetAllProductsCubit extends Cubit<GetAllProductsState> {
       (products) => emit(GetAllProductsSuccess(products: products)),
     );
   }
+
+  Future<void> fetchProductsByCategory({required String categoryName}) async {
+    emit(GetAllProductsLoading());
+    final result = await productsRepo.getProductsByCategory(categoryName: categoryName);
+    result.fold(
+          (failure) => emit(GetAllProductsError(message: failure.toString())),
+          (products) => emit(GetAllProductsSuccess(products: products)),
+    );
+  }
 }

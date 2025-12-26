@@ -42,6 +42,11 @@ class FireStoreServices implements DatabaseServices {
           if (query['limit'] != null) {
             collectionRef = collectionRef.limit(query['limit']);
           }
+          if (query["where"] != null) {
+            var field = query["where"]["field"];
+            var value = query["where"]["value"];
+            collectionRef = collectionRef.where(field, isEqualTo: value);
+          }
         }
         var snapshot = await collectionRef.get();
         if (snapshot.docs.isEmpty) return <Map<String, dynamic>>[];

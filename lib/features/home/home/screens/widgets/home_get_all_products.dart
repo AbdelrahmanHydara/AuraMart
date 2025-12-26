@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shopx/core/components/custom_container.dart';
 import 'package:shopx/core/entity/products_entity.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/features/home/home/screens/widgets/product_card.dart';
@@ -14,7 +15,7 @@ class HomeGetAllProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return CustomContainer(
       color: Colors.green.withAlpha(70),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,10 +26,10 @@ class HomeGetAllProducts extends StatelessWidget {
           verticalSpace(16),
           GridView.builder(
             shrinkWrap: true,
-            padding: EdgeInsets.symmetric(
-              horizontal: 10.h,
-            ),
             physics: const NeverScrollableScrollPhysics(),
+            padding: EdgeInsets.symmetric(
+              horizontal: 10.w,
+            ),
             itemCount: products.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,

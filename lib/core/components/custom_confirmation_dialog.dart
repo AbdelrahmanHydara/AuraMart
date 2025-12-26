@@ -63,8 +63,8 @@ class CustomConfirmationDialog extends StatelessWidget {
                 Expanded(
                   child: TextButton(
                     onPressed: () {
-                      onConfirm();
                       Navigator.pop(context);
+                      onConfirm();
                     },
                     child: TextWidgets.subHeading2(
                       confirmText,

@@ -8,4 +8,6 @@ abstract class ProductsRepo {
   Future<Either<Failure,List<ProductsEntity>>> getBestSellingProducts();
 
   Future<Either<Failure,List<ProductsEntity>>> getLatestProducts();
+
+  Future<Either<Failure,List<ProductsEntity>>> getProductsByCategory({required String categoryName});
 }
