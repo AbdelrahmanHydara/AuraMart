@@ -38,11 +38,12 @@ class HomeGetAllProducts extends StatelessWidget {
               childAspectRatio: 0.69,
             ),
             itemBuilder: (context , index) => ProductCard(
-              width: 210,
-              colorDiscount: Colors.green.shade500,
+              width: 200,
+              colorDiscount: Color(0xff05AF6F),
               product: products[index],
             ),
           ),
+          verticalSpace(18),
         ],
       ),
     );

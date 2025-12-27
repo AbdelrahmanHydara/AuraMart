@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/components/custom_avif_image.dart';
@@ -14,7 +15,7 @@ class ProductCard extends StatelessWidget {
     super.key,
     required this.product,
     this.height = 255,
-    this.width = 170,
+    this.width = 165,
     this.showFavorite = true,
     this.showAddToCart = true,
     this.showRating = true,
@@ -54,6 +55,7 @@ class ProductCard extends StatelessWidget {
         children: [
           Card(
             elevation: 4,
+            shadowColor: Colors.grey.shade900,
             color: appColors.secondaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.r),
@@ -68,16 +70,20 @@ class ProductCard extends StatelessWidget {
                     child: CustomContainer(
                       color: whiteColor,
                       width: double.infinity,
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(12.r),
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(12.r),
+                        topLeft: Radius.circular(12.r),
                       ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: 16.w,
                           vertical: 16.h,
                         ),
-                        child: CustomAvifImage(
-                          imageUrl: product.imageUrl ?? "",
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.r),
+                          child: CustomAvifImage(
+                            imageUrl: product.imageUrl ?? "",
+                          ),
                         ),
                       ),
                     ),
@@ -98,22 +104,22 @@ class ProductCard extends StatelessWidget {
               ),
             ),
           ),
-          if (showDiscount && product.discount != null)
+          if (showDiscount && product.discount != 0)
             Positioned(
               top: 10,
               left: 8,
               child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 4,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10.w,
+                  vertical: 4.h,
                 ),
                 decoration: BoxDecoration(
                   color: colorDiscount ?? Colors.red,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: TextWidgets.bodyText1(
-                  "${product.discount}% discount",
-                  fontSize: 10,
+                  "${product.discount}% Discount",
+                  fontSize: 10.sp,
                   fontWeight: FontWeight.bold,
                   color: whiteColor,
                 ),
@@ -121,22 +127,14 @@ class ProductCard extends StatelessWidget {
             ),
           if (showFavorite)
             Positioned(
-              top: 6,
-              right: 6,
+              top: 8.h,
+              right: 16.w,
               child: GestureDetector(
                 onTap: onFavoriteTap,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8),
-                    child: Icon(
-                      Icons.favorite_border,
-                      size: 18,
-                      color: Colors.red,
-                    ),
-                  ),
+                child:  Icon(
+                  CupertinoIcons.suit_heart,
+                  size: 22.sp,
+                  color: Colors.red,
                 ),
               ),
             ),
@@ -147,28 +145,29 @@ class ProductCard extends StatelessWidget {
               child: AddToCartBlocBuilder(product: product),
             ),
           if (showRating && averageRating > 0)
-            Positioned(
-              bottom: 8,
-              left: 8,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
-                decoration: BoxDecoration(
-                  color: Colors.black54,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.star, size: 12, color: Colors.amber),
-                    horizontalSpace(4),
-                    TextWidgets.bodyText1(
-                      averageRating.toStringAsFixed(1),
-                      fontSize: 10,
-                      color: whiteColor,
-                    ),
-                  ],
-                ),
+          Positioned(
+            top: 140,
+            left: 8,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.black12.withAlpha(100),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child:  Row(
+                children: [
+                  Icon(CupertinoIcons.star_fill,size: 12,color: Colors.yellow.shade700),
+                  horizontalSpace(5),
+                  TextWidgets.bodyText1(
+                    "",
+                    color: Colors.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ],
               ),
             ),
+          ),
         ],
       ),
     );

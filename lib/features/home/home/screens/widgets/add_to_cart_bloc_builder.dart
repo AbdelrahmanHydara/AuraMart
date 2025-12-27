@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/entity/products_entity.dart';
 import 'package:shopx/features/cart/cubit/cart_item_cubit.dart';
 
@@ -23,10 +24,10 @@ class AddToCartBlocBuilder extends StatelessWidget {
           child: Card(
             color: isProductInCart ? Color(0xFFE8F5E9) : null,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.r),
               side: isProductInCart
-                  ? BorderSide(color: Colors.green, width: 1)
-                  : BorderSide.none,
+                  ? BorderSide(color: Color(0xff05AF6F), width: 1)
+                  : BorderSide(color: Colors.grey.shade500, width: .5)
             ),
             child: Padding(
               padding: const EdgeInsets.all(8),
@@ -40,14 +41,14 @@ class AddToCartBlocBuilder extends StatelessWidget {
                 },
                 child: Icon(
                   isProductInCart
-                      ? Icons.done_all
+                      ? Icons.check_circle_outline
                       : Icons.add_shopping_cart,
                   key: ValueKey<bool>(
                     isProductInCart,
                   ),
-                  size: 18,
+                  size: 16.sp,
                   color: isProductInCart
-                      ? Colors.green
+                      ? Color(0xff05AF6F)
                       : Colors.black,
                 ),
               ),

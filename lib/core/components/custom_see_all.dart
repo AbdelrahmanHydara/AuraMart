@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/components/custom_text.dart';
+import 'package:shopx/core/constants/app_strings.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/core/theme/app_colors.dart';
 
@@ -20,16 +21,16 @@ class CustomSeeAll extends StatelessWidget {
         children: [
           TextWidgets.bodyText1(text,
               fontSize: 16.sp,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.bold,
               color: appColors.primaryColor,
           ),
           const Spacer(),
           GestureDetector(
             onTap: onTap,
             child: TextWidgets.bodyText3(
-                "See all",
+              AppStrings.seeAll,
                 fontSize: 13.sp,
-                color: Colors.blue,
+                color: blueColor,
                 fontWeight: FontWeight.w900,
             ),
           ),

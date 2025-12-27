@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopx/core/components/custom_app_bar.dart';
 import 'package:shopx/core/components/custom_confirmation_dialog.dart';
+import 'package:shopx/core/constants/app_strings.dart';
 import 'package:shopx/features/cart/cubit/cart_item_cubit.dart';
 import 'widgets/cart_body_screen.dart';
 
@@ -16,14 +17,12 @@ class CartScreen extends StatelessWidget {
       appBar: CustomAppBar(
         onDelete: () {
           final cubit = context.read<CartItemCubit>();
-
           showDialog(
             context: context,
             builder: (context) => CustomConfirmationDialog(
-              title: 'Clear Cart',
-              content:
-                  'Are you sure you want to remove all items from your cart ?',
-              confirmText: 'Clear All',
+              title: AppStrings.clearCart,
+              content: AppStrings.removeAllItems,
+              confirmText: AppStrings.clearAll,
               onConfirm: () {
                 cubit.clearAllCart();
               },
@@ -32,7 +31,7 @@ class CartScreen extends StatelessWidget {
         },
         isDelete: true,
         isCart: true,
-        text: 'You Cart',
+        text: AppStrings.youCart,
       ),
       body: const CartBodyScreen(),
     );

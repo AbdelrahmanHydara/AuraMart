@@ -19,7 +19,7 @@ class HomeBestSeller extends StatelessWidget {
       padding: EdgeInsets.symmetric(
         vertical: 10.h,
       ),
-      color: Colors.amber.withAlpha(70),
+
       child: Column(
         children: [
           const HomeBestSellerAndSeeAll(),

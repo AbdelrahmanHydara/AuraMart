@@ -18,9 +18,10 @@ class CustomText extends StatelessWidget {
     this.color,
     this.decorationThickness = 2,
     this.fontWeight = FontWeight.w400,
+    this.decorationColor,
   });
   final String text;
-  final Color? color;
+  final Color? color, decorationColor;
   final bool canTrans;
   final int? maxLines;
   final double? height;
@@ -50,6 +51,7 @@ class CustomText extends StatelessWidget {
         fontWeight: fontWeight,
         wordSpacing: wordSpacing,
         letterSpacing: letterSpacing,
+        decorationColor: decorationColor,
         decorationThickness: decorationThickness,
       ),
     );
@@ -129,7 +131,7 @@ class TextWidgets {
 
   static Widget bodyText(
       String text, {
-        Color? color,
+        Color? color, decorationColor,
         double? fontSize,
         FontWeight? fontWeight,
         TextAlign? textAlign,
@@ -143,13 +145,14 @@ class TextWidgets {
       fontWeight: fontWeight ?? FontWeight.w500,
       textAlign: textAlign,
       letterSpacing: letterSpacing,
+      decorationColor: decorationColor,
       maxLines: maxLines,
     );
   }
 
   static Widget bodyText1(
       String text, {
-        Color? color,
+        Color? color, decorationColor,
         double? fontSize,
         FontWeight? fontWeight,
         TextAlign? textAlign,
@@ -168,6 +171,7 @@ class TextWidgets {
       letterSpacing: letterSpacing,
       height: lineHeight,
       decoration: decoration,
+      decorationColor: decorationColor,
       overflow: overflow,
       maxLines: maxLines,
     );

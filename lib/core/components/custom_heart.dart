@@ -23,7 +23,7 @@ class HeartButton extends StatefulWidget {
 class _HeartButtonState extends State<HeartButton> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {},
       child: Icon(
         CupertinoIcons.heart,

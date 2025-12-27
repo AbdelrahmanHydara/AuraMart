@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopx/core/components/custom_glass_nav_bar.dart';
+import 'package:shopx/core/constants/app_strings.dart';
+import 'package:shopx/core/helpers/build_bottom_nav_bar_item.dart';
 import 'package:shopx/features/cart/screens/cart_screen.dart';
+import '../core/theme/app_colors.dart';
 import 'home/home/screens/home_screen.dart';
 import 'profile/screens/profile_screen.dart';
 import 'search/screens/search_screen.dart';
@@ -65,6 +68,7 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return PopScope(
       canPop: false,
       child: Scaffold(
@@ -79,41 +83,45 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
             currentIndex: currentScreen,
             onTap: _onTabTapped,
             items: [
-              BottomNavItemData(
-                label: 'Home',
-                icon: const Icon(CupertinoIcons.home),
-                filledIcon: AnimatedIcon(
-                  icon: AnimatedIcons.menu_home,
-                  progress: iconControllers[0],
-                ),
+              buildBottomNavItemDataItem(
+                index: 0,
+                iconControllers: iconControllers,
+                icon: CupertinoIcons.house,
+                filledIcon: CupertinoIcons.house_fill,
+                label: AppStrings.home,
+                appColors: appColors,
               ),
-              BottomNavItemData(
-                label: 'Cart',
-                icon: const Icon(CupertinoIcons.cart),
-                filledIcon: AnimatedIcon(
-                  icon: AnimatedIcons.view_list,
-                  progress: iconControllers[1],
-                ),
+              buildBottomNavItemDataItem(
+                index: 1,
+                iconControllers: iconControllers,
+                icon: CupertinoIcons.search,
+                filledIcon: Icons.search,
+                label: AppStrings.search,
+                appColors: appColors,
               ),
-              BottomNavItemData(
-                label: 'History',
-                icon: const Icon(Icons.table_bar_outlined),
-                filledIcon: AnimatedIcon(
-                  icon: AnimatedIcons.list_view,
-                  progress: iconControllers[2],
-                ),
+              buildBottomNavItemDataItem(
+                index: 2,
+                iconControllers: iconControllers,
+                icon: CupertinoIcons.cart,
+                filledIcon: CupertinoIcons.cart_fill,
+                label: AppStrings.cart,
+                appColors: appColors,
               ),
-              BottomNavItemData(
-                label: 'Profile',
-                icon: const Icon(CupertinoIcons.person_alt_circle),
-                filledIcon: AnimatedIcon(
-                  icon: AnimatedIcons.arrow_menu,
-                  progress: iconControllers[3],
-                ),
+              buildBottomNavItemDataItem(
+                index: 3,
+                iconControllers: iconControllers,
+                icon: CupertinoIcons.person,
+                filledIcon: CupertinoIcons.person_fill,
+                label: AppStrings.profile,
+                appColors: appColors,
               ),
             ],
           ),
         ),
     );
   }
+
+
 }
+
+

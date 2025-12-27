@@ -137,9 +137,7 @@ class _GlassBottomNavBarState extends State<GlassBottomNavBar> {
                                               ? appColors.primaryColor.withAlpha(220)
                                               : appColors.primaryColor.withAlpha(120),
                                         ),
-                                        child: isSelected
-                                            ? item.filledIcon
-                                            : item.icon,
+                                        child: item.icon,
                                       ),
                                       verticalSpace(2),
                                       CustomText(
@@ -173,11 +171,12 @@ class _GlassBottomNavBarState extends State<GlassBottomNavBar> {
 class BottomNavItemData {
   final Widget icon;
   final String label;
-  final Widget filledIcon;
+  final Widget? filledIcon;
 
   BottomNavItemData({
     required this.icon,
     required this.label,
-    required this.filledIcon,
+    this.filledIcon,
   });
 }
+

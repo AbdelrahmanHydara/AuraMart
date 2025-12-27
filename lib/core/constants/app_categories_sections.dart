@@ -30,11 +30,6 @@ class AppCategoriesSections {
       image: Assets.categoriesSmartWatch,
       name: AppStrings.watches,
     ),
-    // CategoriesSectionsModel(
-    //   id: "1",
-    //   image: "assets/images/categories/electronics.png",
-    //   name: "Accessories",
-    // ),
     CategoriesSectionsModel(
       id: "6",
       image: Assets.categoriesTools,
@@ -47,8 +42,8 @@ class AppCategoriesSections {
     ),
     CategoriesSectionsModel(
       id: "8",
-      image: Assets.categoriesSport,
-      name: AppStrings.sports,
+      image: Assets.categoriesGames,
+      name: AppStrings.games,
     ),
   ];
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopx/core/components/custom_divider.dart';
+import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/features/cart/cubit/cart_item_cubit.dart';
 import 'package:shopx/features/cart/entity/cart_item_entity.dart';
 import 'cart_bottom_sheet.dart';
@@ -20,12 +21,20 @@ class CartBodyScreen extends StatelessWidget {
         }
         return Stack(
           children: [
-            ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              itemCount: cartItems.length,
-              separatorBuilder: (context, index) => const CustomDivider(),
-              itemBuilder: (context, index) =>
-                  CartItemBlocBuilder(cartItemEntity: cartItems[index]),
+            Column(
+              children: [
+                verticalSpace(10),
+                Expanded(
+                  child: ListView.separated(
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: cartItems.length,
+                    separatorBuilder: (context, index) => const CustomDivider(),
+                    itemBuilder: (context, index) =>
+                        CartItemBlocBuilder(cartItemEntity: cartItems[index]),
+                  ),
+                ),
+                verticalSpace(50),
+              ],
             ),
             cartItems.isEmpty
                 ? const SizedBox()

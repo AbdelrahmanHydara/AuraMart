@@ -12,10 +12,10 @@ class Assets {
   static const String categoriesCamera = 'assets/images/categories/camera.png';
   static const String categoriesDrones = 'assets/images/categories/drones.png';
   static const String categoriesElectronics = 'assets/images/categories/electronics.png';
+  static const String categoriesGames = 'assets/images/categories/games.png';
   static const String categoriesIphone = 'assets/images/categories/iphone.png';
   static const String categoriesLaptop = 'assets/images/categories/laptop.png';
   static const String categoriesSmartWatch = 'assets/images/categories/smartWatch.png';
-  static const String categoriesSport = 'assets/images/categories/sport.png';
   static const String categoriesTools = 'assets/images/categories/tools.png';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesSplashAndroid12Dark = 'assets/images/splash_android12_dark.png';
