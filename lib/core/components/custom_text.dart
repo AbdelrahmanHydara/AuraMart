@@ -136,6 +136,9 @@ class TextWidgets {
         FontWeight? fontWeight,
         TextAlign? textAlign,
         double? letterSpacing,
+        double? lineHeight,
+        TextDecoration? decoration,
+        TextOverflow? overflow,
         int? maxLines,
       }) {
     return CustomText(
@@ -145,7 +148,10 @@ class TextWidgets {
       fontWeight: fontWeight ?? FontWeight.w500,
       textAlign: textAlign,
       letterSpacing: letterSpacing,
+      height: lineHeight,
+      decoration: decoration,
       decorationColor: decorationColor,
+      overflow: overflow,
       maxLines: maxLines,
     );
   }

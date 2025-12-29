@@ -19,19 +19,23 @@ BottomNavItemData buildBottomNavItemDataItem({
       animation: iconControllers[index],
       builder: (context, child) {
         double value = iconControllers[index].value;
+        Color startColor = (index == 2)
+            ? Colors.red.withAlpha(140)
+            : appColors.primaryColor.withAlpha(140);
+
+        Color endColor = (index == 2)
+            ? Colors.red
+            : appColors.primaryColor;
+
         Widget iconWidget = Transform.scale(
           scale: 1.0 + (value * 0.15),
           child: Icon(
             value > 0.5 ? filledIcon : icon,
-            color: Color.lerp(
-              appColors.primaryColor.withAlpha(140),
-              appColors.primaryColor,
-              value,
-            ),
+            color: Color.lerp(startColor, endColor, value),
             size: 16.sp,
           ),
         );
-        if (index == 2) {
+        if (index == 3) {
           return Stack(
             clipBehavior: Clip.none,
             children: [

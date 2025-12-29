@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:shopx/core/components/custom_glass_nav_bar.dart';
 import 'package:shopx/core/constants/app_strings.dart';
 import 'package:shopx/core/helpers/build_bottom_nav_bar_item.dart';
+import 'package:shopx/core/theme/app_colors.dart';
 import 'package:shopx/features/cart/screens/cart_screen.dart';
-import '../core/theme/app_colors.dart';
+import 'Offers/screens/offers_screen.dart';
 import 'home/home/screens/home_screen.dart';
 import 'profile/screens/profile_screen.dart';
 import 'search/screens/search_screen.dart';
@@ -29,13 +30,14 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
     screens = [
       HomeScreen(),
       SearchScreen(),
+      OffersScreen(),
       CartScreen(),
       ProfileScreen(),
     ];
 
     controller = PageController(initialPage: 0);
     iconControllers = List.generate(
-      4,
+      5,
       (index) => AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 300),
@@ -72,56 +74,61 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
     return PopScope(
       canPop: false,
       child: Scaffold(
-          extendBody: true,
-          body: PageView(
-            controller: controller,
-            allowImplicitScrolling: true,
-            physics: const NeverScrollableScrollPhysics(),
-            children: screens,
-          ),
-          bottomNavigationBar: GlassBottomNavBar(
-            currentIndex: currentScreen,
-            onTap: _onTabTapped,
-            items: [
-              buildBottomNavItemDataItem(
-                index: 0,
-                iconControllers: iconControllers,
-                icon: CupertinoIcons.house,
-                filledIcon: CupertinoIcons.house_fill,
-                label: AppStrings.home,
-                appColors: appColors,
-              ),
-              buildBottomNavItemDataItem(
-                index: 1,
-                iconControllers: iconControllers,
-                icon: CupertinoIcons.search,
-                filledIcon: Icons.search,
-                label: AppStrings.search,
-                appColors: appColors,
-              ),
-              buildBottomNavItemDataItem(
-                index: 2,
-                iconControllers: iconControllers,
-                icon: CupertinoIcons.cart,
-                filledIcon: CupertinoIcons.cart_fill,
-                label: AppStrings.cart,
-                appColors: appColors,
-              ),
-              buildBottomNavItemDataItem(
-                index: 3,
-                iconControllers: iconControllers,
-                icon: CupertinoIcons.person,
-                filledIcon: CupertinoIcons.person_fill,
-                label: AppStrings.profile,
-                appColors: appColors,
-              ),
-            ],
-          ),
+        extendBody: true,
+        body: PageView(
+          controller: controller,
+          allowImplicitScrolling: true,
+          physics: const NeverScrollableScrollPhysics(),
+          children: screens,
         ),
+        bottomNavigationBar: GlassBottomNavBar(
+          currentIndex: currentScreen,
+          onTap: _onTabTapped,
+          items: [
+            buildBottomNavItemDataItem(
+              index: 0,
+              iconControllers: iconControllers,
+              icon: CupertinoIcons.house,
+              filledIcon: CupertinoIcons.house_fill,
+              label: AppStrings.home,
+              appColors: appColors,
+            ),
+            buildBottomNavItemDataItem(
+              index: 1,
+              iconControllers: iconControllers,
+              icon: CupertinoIcons.search,
+              filledIcon: Icons.search,
+              label: AppStrings.search,
+              appColors: appColors,
+            ),
+            buildBottomNavItemDataItem(
+              index: 2,
+              iconControllers: iconControllers,
+              icon: CupertinoIcons.percent,
+              filledIcon: CupertinoIcons.percent,
+              label: AppStrings.offers,
+              appColors: appColors,
+            ),
+            buildBottomNavItemDataItem(
+              index: 3,
+              iconControllers: iconControllers,
+              icon: CupertinoIcons.cart,
+              filledIcon: CupertinoIcons.cart_fill,
+              label: AppStrings.cart,
+              appColors: appColors,
+            ),
+            buildBottomNavItemDataItem(
+              index: 4,
+              iconControllers: iconControllers,
+              icon: CupertinoIcons.person,
+              filledIcon: CupertinoIcons.person_fill,
+              label: AppStrings.profile,
+              appColors: appColors,
+            ),
+          ],
+          showOffers: true,
+        ),
+      ),
     );
   }
-
-
 }
-
-

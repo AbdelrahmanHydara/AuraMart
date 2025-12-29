@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopx/core/cubits/get_all_products/get_all_products_cubit.dart';
 import 'package:shopx/core/repos/products/products_repo.dart';
 import 'package:shopx/core/services/get_it_services.dart';
 import 'package:shopx/features/home/best_selling/cubit/best_selling_products_cubit.dart';
@@ -26,11 +25,6 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
     final productsRepo = getIt.get<ProductsRepo>();
     return MultiBlocProvider(
       providers: [
-        BlocProvider<GetAllProductsCubit>(
-          create: (context) =>
-              GetAllProductsCubit(productsRepo: productsRepo)
-                ..fetchAllProducts(),
-        ),
         BlocProvider<BestSellingProductsCubit>(
           create: (context) =>
               BestSellingProductsCubit(productsRepo: productsRepo)

@@ -106,8 +106,8 @@ class ProductCard extends StatelessWidget {
           ),
           if (showDiscount && product.discount != 0)
             Positioned(
-              top: 10,
-              left: 8,
+              top: 4,
+              left: 4,
               child: Container(
                 padding: EdgeInsets.symmetric(
                   horizontal: 10.w,
@@ -115,7 +115,10 @@ class ProductCard extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: colorDiscount ?? Colors.red,
-                  borderRadius: BorderRadius.circular(20.r),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12.r),
+                    bottomRight: Radius.circular(12.r),
+                  ),
                 ),
                 child: TextWidgets.bodyText1(
                   "${product.discount}% Discount",

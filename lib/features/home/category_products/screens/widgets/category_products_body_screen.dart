@@ -46,7 +46,7 @@ class CategoryProductsBodyScreen extends StatelessWidget {
           return Skeletonizer(
             enabled: true,
             enableSwitchAnimation: true,
-            child: HomeGetAllProducts(products: getDummyProductsList(4)),
+            child: HomeGetAllProducts(products: getDummyProductsList(2)),
           );
         }
       },

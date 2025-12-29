@@ -3,18 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/core/theme/app_colors.dart';
+import 'package:shopx/generated/assets.dart';
 import 'custom_text.dart';
 
 class GlassBottomNavBar extends StatefulWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
   final List<BottomNavItemData> items;
+  final bool showOffers;
 
   const GlassBottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
     required this.items,
+    required this.showOffers,
   });
 
   @override
@@ -26,16 +29,14 @@ class _GlassBottomNavBarState extends State<GlassBottomNavBar> {
 
   void _updatePill(double width) {
     final itemWidth = width / widget.items.length;
-    _pillLeft =
-        itemWidth * widget.currentIndex + (itemWidth - 40) / 2;
+    _pillLeft = itemWidth * widget.currentIndex + (itemWidth - 40.w) / 2;
   }
 
   @override
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColors>()!;
-
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 28.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       child: LayoutBuilder(
         builder: (context, constraints) {
           final totalWidth = constraints.maxWidth;
@@ -76,8 +77,8 @@ class _GlassBottomNavBarState extends State<GlassBottomNavBar> {
                           child: AnimatedContainer(
                             duration: Duration(milliseconds: 300),
                             curve: Curves.linear,
-                            width: 40,
-                            height: 40,
+                            width: 40.w,
+                            height: 40.h,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
@@ -106,6 +107,10 @@ class _GlassBottomNavBarState extends State<GlassBottomNavBar> {
                           children: List.generate(widget.items.length, (index) {
                             final item = widget.items[index];
                             final isSelected = index == widget.currentIndex;
+                            final isOffers = index == 2;
+                            Color contentColor = isSelected
+                                ? (isOffers ? Colors.red : appColors.primaryColor)
+                                : appColors.primaryColor.withAlpha(120);
                             return Expanded(
                               child: InkWell(
                                 onTap: () {
@@ -113,8 +118,7 @@ class _GlassBottomNavBarState extends State<GlassBottomNavBar> {
                                   setState(() {
                                     final itemWidth =
                                         totalWidth / widget.items.length;
-                                    _pillLeft = itemWidth * index +
-                                        (itemWidth - 40) / 2;
+                                    _pillLeft = itemWidth * index + (itemWidth - 40.w) / 2;
                                   });
                                 },
                                 borderRadius: BorderRadius.circular(100.r),
@@ -122,31 +126,34 @@ class _GlassBottomNavBarState extends State<GlassBottomNavBar> {
                                   height: 74.h,
                                   decoration: isSelected
                                       ? BoxDecoration(
-                                    color: Colors.grey.withAlpha(35),
+                                    color: Colors.grey.withAlpha(20),
                                     borderRadius: BorderRadius.circular(100.r),
                                   ) : null,
                                   padding: isSelected ?
-                                  EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h) : null,
+                                  EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h) : null,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      IconTheme(
-                                        data: IconThemeData(
-                                          size: isSelected ? 22 : 20,
-                                          color: isSelected
-                                              ? appColors.primaryColor.withAlpha(220)
-                                              : appColors.primaryColor.withAlpha(120),
+                                      if (isOffers && widget.showOffers)
+                                        Image.asset(
+                                          Assets.bagOffers,
+                                          width: 20.w,
+                                          height: 20.h,
                                         ),
-                                        child: item.icon,
-                                      ),
+                                      if (!(isOffers && widget.showOffers))
+                                        IconTheme(
+                                          data: IconThemeData(
+                                            size: isSelected ? 22 : 20,
+                                            color: contentColor,
+                                          ),
+                                          child: item.icon,
+                                        ),
                                       verticalSpace(2),
                                       CustomText(
                                         text: item.label,
-                                        fontSize: 11.sp,
+                                        fontSize: 10.sp,
                                         fontWeight: FontWeight.w500,
-                                        color: isSelected
-                                            ? appColors.primaryColor.withAlpha(220)
-                                            : appColors.primaryColor.withAlpha(140),
+                                        color: contentColor,
                                       ),
                                     ],
                                   ),

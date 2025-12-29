@@ -3,11 +3,13 @@ class Assets {
   Assets._();
 
   static const String bagEmptyCart = 'assets/images/bag/emptyCart.png';
+  static const String bagOffers = 'assets/images/bag/offers.png';
   static const String bannersBanner = 'assets/images/banners/banner.gif';
   static const String bannersBanner1 = 'assets/images/banners/banner1.gif';
   static const String bannersBanner2 = 'assets/images/banners/banner2.gif';
   static const String bannersBanner3 = 'assets/images/banners/banner3.gif';
   static const String bannersBanner4 = 'assets/images/banners/banner4.gif';
+  static const String bannersBanner5 = 'assets/images/banners/banner5.gif';
   static const String categoriesAirPods = 'assets/images/categories/airPods.png';
   static const String categoriesCamera = 'assets/images/categories/camera.png';
   static const String categoriesDrones = 'assets/images/categories/drones.png';

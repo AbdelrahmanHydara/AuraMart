@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopx/core/services/bloc_observer_services.dart';
-import 'package:shopx/core/theme/logic/theme_cubit.dart';
 import 'package:shopx/shopx.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'core/services/get_it_services.dart';
@@ -23,9 +22,6 @@ void main() async {
   Bloc.observer = BlocObserverServices();
   setupGetIt();
   runApp(
-    BlocProvider(
-          create: (_) => ThemeCubit(),
-          child: const ShopX(),
-      ),
+    const ShopX(),
   );
 }

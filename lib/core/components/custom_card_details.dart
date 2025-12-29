@@ -43,7 +43,7 @@ class CustomCardDetails extends StatelessWidget {
               color: appColors.primaryColor,
             ),
             if (oldPrice != 0) ...[
-              horizontalSpace(8),
+              horizontalSpace(4),
               TextWidgets.bodyText1(
                 "EGP $oldPrice",
                 color: Color(0xff05AF6F),
@@ -59,18 +59,18 @@ class CustomCardDetails extends StatelessWidget {
           children: [
             Icon(
               CupertinoIcons.cube_box,
-              size: 12,
+              size: 11.sp,
               color: appColors.primaryColor,
             ),
             horizontalSpace(4),
             TextWidgets.bodyText(
-              quantity > 0 ? "Only $quantity left in Stock" : "Out of Stock",
+              quantity > 0 ? "Only $quantity left In Stock" : "Out of Stock",
               fontSize: 10.sp,
               color: quantity > 0 ? Color(0xff05AF6F) : Colors.red,
             ),
           ],
         ),
-        verticalSpace(4),
+        verticalSpace(2),
       ],
     );
   }

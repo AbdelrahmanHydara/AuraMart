@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopx/features/Offers/screens/offers_screen.dart';
 import 'package:shopx/features/auth/login/login_screen.dart';
 import 'package:shopx/features/auth/register/screens/register_screen.dart';
 import 'package:shopx/features/checkout/screens/checkout_screen.dart';
@@ -31,6 +32,10 @@ class AppRouter {
       case Routes.searchScreen:
         return MaterialPageRoute(
             builder: (_) => const SearchScreen(),
+        );
+      case Routes.offersScreen:
+        return MaterialPageRoute(
+          builder: (_) => const OffersScreen(),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
