@@ -9,11 +9,11 @@ class HomeBannerSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      padding: EdgeInsets.symmetric(horizontal: 12.w),
       child: CarouselSlider.builder(
         itemCount: AppConstants.bannerImages.length,
         options: CarouselOptions(
-          height: 90.h,
+          height: 68.h,
           enlargeCenterPage: true,
           viewportFraction: 1,
           autoPlay: true,

@@ -12,31 +12,24 @@ class HomeBestSellerBlocBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<BestSellingProductsCubit, BestSellingProductsState>(
-        listener: (context, state) {
-          if (state is BestSellingProductsError) {
-            showAppToast(
-              message: state.message,
-              bgColor: Colors.red,
-            );
-          }
-        },
-        builder: (context, state) {
-          if (state is BestSellingProductsSuccess) {
-            return HomeBestSeller(
-              products: state.products,
-            );
-          }
-          if (state is BestSellingProductsLoading) {
-            return Skeletonizer(
-              enabled: true,
-              enableSwitchAnimation: true,
-              child: HomeBestSeller(
-                products: getDummyProductsList(5),
-              ),
-            );
-          }
-          return const SizedBox.shrink();
+      listener: (context, state) {
+        if (state is BestSellingProductsError) {
+          showAppToast(message: state.message, bgColor: Colors.red);
         }
+      },
+      builder: (context, state) {
+        if (state is BestSellingProductsSuccess) {
+          return HomeBestSeller(products: state.products);
+        }
+        if (state is BestSellingProductsLoading) {
+          return Skeletonizer(
+            enabled: true,
+            enableSwitchAnimation: true,
+            child: HomeBestSeller(products: getDummyProductsList(5)),
+          );
+        }
+        return const SizedBox.shrink();
+      },
     );
   }
 }

@@ -7,11 +7,12 @@ ProductsEntity getDummyProduct() {
     code: '1',
     name: 'Smart Watch',
     reviews: [],
-    discount: 0,
-    oldPrice: 0,
-    quantity: 0,
+    discount: 20,
+    oldPrice: 12,
+    quantity: 8,
     imageUrl: null,
     categoryId: '',
+    category: '',
   );
 }
 

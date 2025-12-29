@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/components/custom_avif_image.dart';
 import 'package:shopx/core/components/custom_card_details.dart';
 import 'package:shopx/core/components/custom_confirmation_dialog.dart';
-import 'package:shopx/core/components/custom_container.dart';
 import 'package:shopx/core/components/custom_text.dart';
 import 'package:shopx/core/constants/app_strings.dart';
 import 'package:shopx/core/helpers/spacing.dart';
@@ -21,79 +20,103 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     return Padding(
-      padding: EdgeInsets.only(right: 12.w, left: 12.w, top: 16.h),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: EdgeInsets.only(right: 12.w, left: 12.w, top: 10.h),
+      child: Column(
         children: [
-          Stack(
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16.r),
-                child: CustomAvifImage(
-                  imageUrl: cartItemEntity.productsEntity.imageUrl ?? "",
-                ),
-              ),
-              Positioned(
-                top: 2,
-                left: 0,
-                child: CustomContainer(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 6,
-                    vertical: 2,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xff05AF6F),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: TextWidgets.bodyText1(
-                    "${cartItemEntity.productsEntity.discount}% discount",
-                    fontSize: 10.sp,
-                    fontWeight: FontWeight.bold,
-                    color: whiteColor,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          horizontalSpace(10),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 5.w),
-              child: Column(
+              Stack(
                 children: [
-                  CustomCardDetails(
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16.r),
+                    child: CustomAvifImage(
+                      imageUrl: cartItemEntity.productsEntity.imageUrl ?? "",
+                    ),
+                  ),
+                  if (cartItemEntity.productsEntity.discount != 0)
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10.w,
+                          vertical: 4.h,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.teal,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(12.r),
+                            bottomRight: Radius.circular(12.r),
+                          ),
+                        ),
+                        child: TextWidgets.bodyText1(
+                          "${cartItemEntity.productsEntity.discount}% Discount",
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.bold,
+                          color: whiteColor,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              horizontalSpace(10),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10.h,
+                    horizontal: 5.w,
+                  ),
+                  child: CustomCardDetails(
                     maxLinesName: 8,
                     name: cartItemEntity.productsEntity.name,
                     quantity: cartItemEntity.productsEntity.quantity,
                     oldPrice: cartItemEntity.productsEntity.oldPrice,
                     price: cartItemEntity.productsEntity.price,
                   ),
-                  verticalSpace(10),
-                  Row(
-                    children: [
-                      CartItemActionButtons(cartItemEntity: cartItemEntity),
-                      const Spacer(),
-                      CartButtonDelete(
-                        onDelete: () {
-                          final cubit = context.read<CartItemCubit>();
-                          showDialog(
-                            context: context,
-                            builder: (context) => CustomConfirmationDialog(
-                              title: AppStrings.removeItem,
-                              content: AppStrings.removeThisItem,
-                              confirmText: AppStrings.remove,
-                              onConfirm: () {
-                                cubit.removeCartItem(cartItemEntity);
-                              },
-                            ),
-                          );
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(right: 12.w, left: 12.w, bottom: 10.h),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CartItemActionButtons(cartItemEntity: cartItemEntity),
+                Row(
+                  children: [
+                    TextWidgets.bodyText(
+                      "${AppStrings.totalPrice} : ",
+                      fontSize: 13.sp,
+                      color: appColors.primaryColor,
+                    ),
+                    TextWidgets.subHeading2(
+                      "EGP ${(cartItemEntity.productsEntity.price * cartItemEntity.count).toInt()}",
+                      color: appColors.primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ],
+                ),
+                CartButtonDelete(
+                  onDelete: () {
+                    final cubit = context.read<CartItemCubit>();
+                    showDialog(
+                      context: context,
+                      builder: (context) => CustomConfirmationDialog(
+                        title: AppStrings.removeItem,
+                        content: AppStrings.removeThisItem,
+                        confirmText: AppStrings.remove,
+                        onConfirm: () {
+                          cubit.removeCartItem(cartItemEntity);
                         },
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ],

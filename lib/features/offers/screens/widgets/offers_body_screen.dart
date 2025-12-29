@@ -21,36 +21,38 @@ class OffersBodyScreen extends StatelessWidget {
             ? getDummyProductsList(6)
             : state.products.where((p) => (p.discount ?? 0) > 0).toList();
         if (!isLoading && offers.isEmpty) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.local_offer_outlined,
-                  size: 64.sp,
-                  color: Colors.grey,
-                ),
-                verticalSpace(16),
-                TextWidgets.heading(AppStrings.noOffers, color: Colors.grey),
-              ],
+          return SliverFillRemaining(
+            hasScrollBody: false,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.local_offer_outlined, size: 64.sp, color: Colors.grey),
+                  verticalSpace(16),
+                  TextWidgets.heading(AppStrings.noOffers, color: Colors.grey),
+                ],
+              ),
             ),
           );
         }
-        return Skeletonizer(
+        return Skeletonizer.sliver(
           enabled: isLoading,
-          enableSwitchAnimation: true,
-          child: GridView.builder(
-            padding: EdgeInsets.fromLTRB(16.w, 10.h, 16.w, 100.h),
-            itemCount: offers.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 16.h,
-              crossAxisSpacing: 14.w,
-              childAspectRatio: 0.65,
+          child: SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 28.w),
+            sliver: SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 16.h,
+                crossAxisSpacing: 14.w,
+                childAspectRatio: 0.62,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                  return OfferProductCard(product: offers[index]);
+                },
+                childCount: offers.length,
+              ),
             ),
-            itemBuilder: (context, index) {
-              return OfferProductCard(product: offers[index]);
-            },
           ),
         );
       },

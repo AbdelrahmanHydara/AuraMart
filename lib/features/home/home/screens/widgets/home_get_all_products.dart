@@ -28,7 +28,7 @@ class HomeGetAllProducts extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             padding: EdgeInsets.symmetric(
-              horizontal: 10.w,
+              horizontal: 12.w,
             ),
             itemCount: products.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

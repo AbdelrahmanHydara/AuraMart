@@ -9,6 +9,8 @@ import 'package:shopx/core/helpers/spacing.dart';
 import 'package:shopx/core/theme/app_colors.dart';
 import 'package:shopx/features/home/home/screens/widgets/add_to_cart_bloc_builder.dart';
 
+import '../../../../core/helpers/get_category_color.dart';
+
 class OfferProductCard extends StatelessWidget {
   const OfferProductCard({
     super.key,
@@ -123,7 +125,7 @@ class OfferProductCard extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
                   decoration: BoxDecoration(
-                    color: colorDiscount ?? const Color(0xFFFE3131),
+                    color: getCategoryColor(product.category),
                     borderRadius: BorderRadius.only(bottomRight: Radius.circular(12.r)),
                   ),
                   child: Text(

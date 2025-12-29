@@ -26,12 +26,12 @@ class HomeCategoriesAppBar extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 2.w),
               child: CustomContainer(
-                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
                 radius: 30.r,
                 color: Colors.grey.withAlpha(25),
                 child: TextWidgets.bodyText(
                   AppCategoriesSections.categoriesList[index].name,
-                  fontSize: 11.sp,
+                  fontSize: 10.sp,
                   fontWeight: FontWeight.bold,
                   color: appColor.primaryColor,
                 ),

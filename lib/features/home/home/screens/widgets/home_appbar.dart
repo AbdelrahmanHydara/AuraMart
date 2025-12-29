@@ -29,7 +29,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           const HomeTopAppBar(),
           verticalSpace(12),
           const HomeSearchAppBar(),
-          verticalSpace(16),
+          verticalSpace(12),
           const HomeCategoriesAppBar(),
         ],
       ),

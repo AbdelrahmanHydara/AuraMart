@@ -24,13 +24,19 @@ class AppStrings {
   static const String mostPopular = 'Most Popular';
   static const String newArrivals = 'New Arrivals';
   static const String seeAll = 'See All';
+  // Login Screen
+  static const String createAnAccount = 'Create an Account';
+  static const String guestUser = 'Guest User';
+
+
   // remove cart item
   static const String removeItem = 'Remove Item';
   static const String remove = 'Remove';
   static const String removeThisItem = 'Do you want to remove this item from the cart ?';
   // Cart Screen
-  static const String youCart = 'You Cart';
+  static const String myCart = 'My Cart';
   static const String checkout = 'CHECKOUT';
+  static const String totalPrice = 'Total Price';
   static const String goToShopping = 'Go To Shopping';
   // Clear Cart items
   static const String clearCart = 'Clear Cart';
@@ -49,6 +55,13 @@ class AppStrings {
   static const String noOffers = 'No offers available at the moment.';
   static const String endsIn = 'Ends in:';
   static const String flashSALE = 'FLASH SALE';
+  // Checkout Screen
+  static const String checkoutTitle = 'Check Out';
+  static const String paymentMethod = 'Payment Method';
+  static const String shippingAddress = 'Shipping Address';
+  static const String orderSummary = 'Order Summary';
+  static const String placeOrder = 'PLACE ORDER';
+
 
 
 

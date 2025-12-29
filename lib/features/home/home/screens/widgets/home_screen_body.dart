@@ -14,11 +14,11 @@ class HomeScreenBody extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
-          verticalSpace(170),
+          verticalSpace(164),
           const HomeLinearGradient(),
-          verticalSpace(20),
+          verticalSpace(16),
           const HomeBestSellerBlocBuilder(),
-          verticalSpace(30),
+          verticalSpace(20),
           const HomeLatestProductsBlocBuilder(),
           verticalSpace(30),
           const HomeGetAllProductsBlocBuilder(),

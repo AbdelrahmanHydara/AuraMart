@@ -45,7 +45,7 @@ class _HomeSearchAppBarState extends State<HomeSearchAppBar> {
     return GestureDetector(
       onTap: () => context.pushNamed(Routes.searchScreen),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+        padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 6.h),
         decoration: BoxDecoration(
           color: appColors.searchColor,
           borderRadius: BorderRadius.circular(12.r),
@@ -53,9 +53,9 @@ class _HomeSearchAppBarState extends State<HomeSearchAppBar> {
         ),
         child: Row(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 12, right: 8),
-              child: Icon(CupertinoIcons.search, size: 18),
+            Padding(
+              padding: EdgeInsets.only(left: 12.w, right: 8.w),
+              child: Icon(CupertinoIcons.search, size: 16.sp),
             ),
             Text(
               "Search for ${AppCategoriesSections.categoriesList[_currentIndex].name}",

@@ -3,6 +3,7 @@ import 'review_entity.dart';
 class ProductsEntity {
   final String code;
   final String name;
+  final String category;
   final String description;
   final int price;
   final int quantity;
@@ -25,6 +26,7 @@ class ProductsEntity {
     required this.price,
     required this.quantity,
     required this.categoryId,
+    required this.category,
   });
 
   @override

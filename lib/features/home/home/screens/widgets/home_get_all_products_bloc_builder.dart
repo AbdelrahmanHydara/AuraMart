@@ -15,16 +15,15 @@ class HomeGetAllProductsBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         if (state is GetAllProductsSuccess) {
           return HomeGetAllProducts(products: state.products);
-        } else if (state is GetAllProductsError) {
+        }
+        if (state is GetAllProductsError) {
           showAppToast(message: state.message, bgColor: Colors.red);
         }
-        {
-          return Skeletonizer(
-            enabled: true,
-            enableSwitchAnimation: true,
-            child: HomeGetAllProducts(products: getDummyProductsList(6)),
-          );
-        }
+        return Skeletonizer(
+          enabled: true,
+          enableSwitchAnimation: true,
+          child: HomeGetAllProducts(products: getDummyProductsList(6)),
+        );
       },
     );
   }

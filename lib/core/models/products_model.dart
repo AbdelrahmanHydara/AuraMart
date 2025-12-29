@@ -5,6 +5,7 @@ import 'package:shopx/core/models/review_model.dart';
 class ProductsModel {
   final String code;
   final String name;
+  final String category;
   final String description;
   final int price;
   final int quantity;
@@ -27,12 +28,14 @@ class ProductsModel {
     required this.discount,
     required this.oldPrice,
     required this.createdAt,
+    required this.category,
   });
 
   factory ProductsModel.fromJson(Map<String, dynamic> json) {
     return ProductsModel(
       code: json['code'],
       name: json['name'],
+      category: json['category'],
       description: json['description'],
       price: (json['price'] as num).toInt(),
       quantity: json['quantity'],
@@ -53,6 +56,7 @@ class ProductsModel {
     return ProductsEntity(
       code: code,
       name: name,
+      category: category,
       description: description,
       price: price,
       quantity: quantity,
@@ -68,6 +72,7 @@ class ProductsModel {
     return {
       'code': code,
       'name': name,
+      'category': category,
       'description': description,
       'price': price,
       'quantity': quantity,

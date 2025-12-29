@@ -5,7 +5,6 @@ import 'package:shopx/core/components/custom_text.dart';
 import 'package:shopx/core/constants/app_constants.dart';
 import 'package:shopx/core/constants/app_strings.dart';
 import 'package:shopx/core/helpers/spacing.dart';
-import 'package:shopx/core/theme/app_colors.dart';
 
 class OfferBanner extends StatelessWidget {
   const OfferBanner({super.key, required this.duration});

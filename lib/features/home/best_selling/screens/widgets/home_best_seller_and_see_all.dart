@@ -11,6 +11,7 @@ class HomeBestSellerAndSeeAll extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomSeeAll(
       text: AppStrings.mostPopular,
+      color: Colors.black87,
       onTap: () => context.pushNamed(Routes.bestSellingScreen),
     );
   }

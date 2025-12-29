@@ -55,16 +55,23 @@ class _OffersScreenState extends State<OffersScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: AnimatedContainer(
-        duration: const Duration(seconds: 1),
+        duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
         color: _colors[_colorIndex],
         child: SafeArea(
-          child: Column(
-            children: [
-              verticalSpace(20),
-              OfferBanner(duration: _duration),
-              verticalSpace(10),
-              const Expanded(child: OffersBodyScreen()),
+          child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    verticalSpace(20),
+                    OfferBanner(duration: _duration),
+                    verticalSpace(10),
+                  ],
+                ),
+              ),
+              const OffersBodyScreen(),
             ],
           ),
         ),
