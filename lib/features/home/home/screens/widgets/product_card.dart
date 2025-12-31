@@ -106,8 +106,8 @@ class ProductCard extends StatelessWidget {
           ),
           if (showDiscount && product.discount != 0)
             Positioned(
-              top: 4,
-              left: 4,
+              top: 4.h,
+              left: 4.w,
               child: Container(
                 padding: EdgeInsets.symmetric(
                   horizontal: 10.w,

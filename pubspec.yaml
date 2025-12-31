@@ -33,13 +33,24 @@ dependencies:
   firebase_core: ^4.2.1
   firebase_auth: ^6.1.2
   cloud_firestore: ^6.1.0
+  # A Flutter plugin to use the Firebase Cloud Messaging API to send and receive push notifications.
   google_sign_in: ^6.0.0
+  # A Flutter plugin that provides Facebook authentication.
   flutter_facebook_auth: ^6.0.0
+  # A Flutter package to show toast messages in Android and iOS.
   fluttertoast: ^9.0.0
+  # A simple service locator for Dart and Flutter projects to decouple the interface from concrete implementations.
   get_it: ^9.0.5
+  # Functional programming in Dart, with Either, Option, Task, and more.
   dartz: ^0.10.1
+  # A Flutter package to render SVG (Scalable Vector Graphics) files.
   flutter_svg: ^2.2.3
+  # A Flutter package to display AVIF images with high performance and low memory usage.
   flutter_avif: ^2.2.0
+  # A Flutter package that provides a customizable phone number input field with country code selection and validation.
+  intl_phone_field: ^3.2.0
+
+
 
 dev_dependencies:
   flutter_test:
@@ -54,7 +65,6 @@ flutter_launcher_icons:
   min_sdk_android: 21
 
 flutter:
-
   uses-material-design: true
 
   assets:
