@@ -10,6 +10,9 @@ import 'package:shopx/features/search/screens/search_screen.dart';
 import 'routes.dart';
 
 class AppRouter {
+  /// A global key to access the navigator state throughout the app.
+  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  /// Generates routes based on the provided [RouteSettings].
   static Route? generateRoute(RouteSettings settings) {
     switch(settings.name)
     {

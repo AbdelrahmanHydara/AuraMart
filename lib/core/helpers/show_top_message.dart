@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopx/core/components/custom_text.dart';
 import 'package:shopx/core/helpers/spacing.dart';
+import 'package:shopx/core/routing/app_router.dart';
 import 'package:shopx/core/theme/app_colors.dart';
 
-void showTopMessage({
-  required BuildContext context,
-  required String message,
-  bool isError = true,
-}) {
-  final overlay = Overlay.of(context);
+/// Displays a temporary top message overlay.
+void showTopMessage({required String message, bool isError = true}) {
+  final OverlayState? overlay = AppRouter.navigatorKey.currentState?.overlay;
+
+  if (overlay == null) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showTopMessage(message: message, isError: isError);
+    });
+    return;
+  }
 
   final overlayEntry = OverlayEntry(
     builder: (context) {
@@ -23,15 +28,10 @@ void showTopMessage({
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             decoration: BoxDecoration(
-              color: isError
-                  ? Colors.red.shade900
-                  : Colors.green.shade700,
+              color: isError ? Colors.red.shade900 : Colors.green.shade700,
               borderRadius: BorderRadius.circular(12.r),
               boxShadow: const [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 10,
-                ),
+                BoxShadow(color: Colors.black26, blurRadius: 10),
               ],
             ),
             child: Row(
@@ -67,4 +67,3 @@ void showTopMessage({
     overlayEntry.remove();
   });
 }
-
