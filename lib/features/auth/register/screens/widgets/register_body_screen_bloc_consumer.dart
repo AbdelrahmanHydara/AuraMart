@@ -16,7 +16,6 @@ class RegisterBodyScreenBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is RegisterSuccess) {
           showTopMessage(
-            context: context,
             message: AppStrings.registeredSuccessfully,
             isError: false,
           );
@@ -24,7 +23,6 @@ class RegisterBodyScreenBlocConsumer extends StatelessWidget {
         }
         if (state is RegisterError) {
           showTopMessage(
-            context: context,
             message: state.errorMessage,
             isError: true,
           );

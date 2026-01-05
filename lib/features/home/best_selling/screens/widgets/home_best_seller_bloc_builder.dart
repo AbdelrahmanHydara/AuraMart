@@ -15,7 +15,6 @@ class HomeBestSellerBlocBuilder extends StatelessWidget {
       listener: (context, state) {
         if (state is BestSellingProductsError) {
           showTopMessage(
-            context: context,
             message: state.message,
             isError: true,
           );

@@ -22,54 +22,52 @@ class ShopX extends StatelessWidget {
       minTextAdapt: true,
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(
-              create: (context) => ThemeCubit(),
-          ),
-          BlocProvider(create: (context) => CartItemCubit()
-          ),
-          BlocProvider(
-            create: (context) => GetAllProductsCubit(
+          /// Theme App Cubit
+          BlocProvider(create: (context) => ThemeCubit()),
+          /// Cart Item Cubit
+          BlocProvider(create: (context) => CartItemCubit()),
+          /// Fetch all products at app start
+          BlocProvider(create: (context) => GetAllProductsCubit(
               productsRepo: getIt.get<ProductsRepo>(),
-            )..fetchAllProducts(),
-          ),
+            )..fetchAllProducts(),),
         ],
-        child: BlocListener<CartItemCubit, CartItemState>(
-          listener: (context, state) {
-            if (state is CartItemAdded) {
-              showTopMessage(
-                context: context,
-                message: AppStrings.itemAdded,
-                isError: false,
-              );
-            }
-            if (state is CartItemRemoved) {
-              showTopMessage(
-                context: context,
-                message: AppStrings.itemRemoved,
-                isError: true,
-              );
-            }
-            if (state is CartCleared) {
-              showTopMessage(
-                context: context,
-                message: AppStrings.allItemsCleared,
-                isError: true,
-              );
-            }
+        child: BlocBuilder<ThemeCubit, ThemeState>(
+          builder: (context, state) {
+            final theme = (state is ThemeInitial) ? state.themeData : ThemeData.light();
+            return MaterialApp(
+              theme: theme,
+              debugShowCheckedModeBanner: false,
+              initialRoute: Routes.rootScreen,
+              onGenerateRoute: AppRouter.generateRoute,
+              /// Navigator Key for showing top messages
+              navigatorKey: AppRouter.navigatorKey,
+              builder: (context, child) {
+                return BlocListener<CartItemCubit, CartItemState>(
+                  listener: (context, state) {
+                    if (state is CartItemAdded) {
+                      showTopMessage(
+                        message: AppStrings.itemAdded,
+                        isError: false,
+                      );
+                    }
+                    if (state is CartItemRemoved) {
+                      showTopMessage(
+                        message: AppStrings.itemRemoved,
+                        isError: true,
+                      );
+                    }
+                    if (state is CartCleared) {
+                      showTopMessage(
+                        message: AppStrings.allItemsCleared,
+                        isError: true,
+                      );
+                    }
+                  },
+                  child: child!,
+                );
+              },
+            );
           },
-          child: BlocBuilder<ThemeCubit, ThemeState>(
-            builder: (context, state) {
-              final theme = (state is ThemeInitial)
-                  ? state.themeData
-                  : ThemeData.light();
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                theme: theme,
-                initialRoute: Routes.rootScreen,
-                onGenerateRoute: AppRouter.generateRoute,
-              );
-            },
-          ),
         ),
       ),
     );

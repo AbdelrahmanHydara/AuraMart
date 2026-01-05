@@ -16,7 +16,6 @@ class LoginBodyScreenBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginSuccess) {
             showTopMessage(
-              context: context,
               message: AppStrings.loginSuccessfully,
               isError: false,
             );
@@ -24,7 +23,6 @@ class LoginBodyScreenBlocConsumer extends StatelessWidget {
         }
         if (state is LoginError) {
             showTopMessage(
-              context: context,
               message: state.errorMessage,
               isError: true,
             );

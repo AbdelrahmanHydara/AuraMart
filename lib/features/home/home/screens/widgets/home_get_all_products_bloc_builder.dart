@@ -18,7 +18,6 @@ class HomeGetAllProductsBlocBuilder extends StatelessWidget {
         }
         if (state is GetAllProductsError) {
           showTopMessage(
-            context: context,
             message: state.message,
             isError: true,
           );

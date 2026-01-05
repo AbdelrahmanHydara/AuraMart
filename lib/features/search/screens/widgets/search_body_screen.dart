@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopx/core/helpers/spacing.dart';
 
 class SearchBodyScreen extends StatelessWidget {
   const SearchBodyScreen({super.key});
@@ -6,8 +7,9 @@ class SearchBodyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const [
-        Text('Search Screen'),
+      children: [
+        verticalSpace(80),
+       
       ],
     );
   }
