@@ -20,7 +20,7 @@ class RegisterButtonOnLoginScreen extends StatelessWidget {
             onPressed: () => context.pushReplacementNamed(Routes.registerScreen),
           ),
         ),
-        horizontalSpace(10),
+        horizontalSpace(16),
         Expanded(
           child: CustomButtonAuth(
             text: AppStrings.guestUser,

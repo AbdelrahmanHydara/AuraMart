@@ -12,6 +12,17 @@ const Color bgBottomNavBarDark = Color(0xFF1C1C1E);
  const Color blueColor = Color(0xff3966de);
  const Color yellowColor = Color(0xffffee00);
  const Color greenColor = Color(0xff019309);
+ const Color cyanAccentColor = Colors.cyanAccent;
+
+ const gradientAuth = LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: [
+    Color(0xFF2D1E6B),
+    Color(0xFF1A3A6E),
+    Color(0xFF0F2027),
+  ],
+);
 
 @immutable
 class AppColors extends ThemeExtension<AppColors> {

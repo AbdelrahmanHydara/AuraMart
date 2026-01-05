@@ -56,6 +56,7 @@ class AppTheme {
     scaffoldBackgroundColor: whiteColor,
   );
 
+
   // DARK THEME
   static final ThemeData dark = ThemeData(
     extensions:  const <ThemeExtension<AppColors>>[

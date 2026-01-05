@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopx/core/components/custom_glass_container.dart';
 import 'package:shopx/core/services/get_it_services.dart';
 import 'package:shopx/features/auth/domain/repos/auth_repo.dart';
 import 'package:shopx/features/auth/register/cubit/register_cubit.dart';
@@ -12,20 +11,11 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          RegisterCubit(
-            getIt.get<AuthRepo>(),
-          ),
-      child: CustomGlassContainer(
-        child: GestureDetector(
-          onTap: FocusScope.of(context).unfocus,
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: RegisterBodyScreenBlocConsumer(),
-          ),
-        ),
+      create: (context) => RegisterCubit(getIt.get<AuthRepo>()),
+      child: GestureDetector(
+        onTap: FocusScope.of(context).unfocus,
+        child: Scaffold(body: const RegisterBodyScreenBlocConsumer()),
       ),
     );
   }
 }
-

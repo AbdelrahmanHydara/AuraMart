@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shopx/core/constants/app_strings.dart';
 import 'package:shopx/core/repos/products/products_repo.dart';
 import 'package:shopx/core/routing/app_router.dart';
 import 'package:shopx/core/routing/routes.dart';
 import 'package:shopx/core/theme/logic/theme_cubit.dart';
 import 'package:shopx/core/theme/logic/theme_state.dart';
 import 'core/cubits/get_all_products/get_all_products_cubit.dart';
-import 'core/helpers/show_app_toast.dart';
+import 'core/helpers/show_top_message.dart';
 import 'core/services/get_it_services.dart';
 import 'features/cart/cubit/cart_item_cubit.dart';
 
@@ -35,21 +36,24 @@ class ShopX extends StatelessWidget {
         child: BlocListener<CartItemCubit, CartItemState>(
           listener: (context, state) {
             if (state is CartItemAdded) {
-              showAppToast(
-                message: 'Item added to cart',
-                bgColor: Colors.green,
+              showTopMessage(
+                context: context,
+                message: AppStrings.itemAdded,
+                isError: false,
               );
             }
             if (state is CartItemRemoved) {
-              showAppToast(
-                message: 'Item removed from cart',
-                bgColor: Colors.red,
+              showTopMessage(
+                context: context,
+                message: AppStrings.itemRemoved,
+                isError: true,
               );
             }
             if (state is CartCleared) {
-              showAppToast(
-                message: 'All items cleared from cart',
-                bgColor: Colors.red,
+              showTopMessage(
+                context: context,
+                message: AppStrings.allItemsCleared,
+                isError: true,
               );
             }
           },

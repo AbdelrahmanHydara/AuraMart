@@ -2,8 +2,9 @@ class AppStrings {
   AppStrings._();
 
   // General
-  static const String appName = 'ShopX';
+  static const String appName = 'Apex';
   static const String categories = 'Categories';
+  static const String loadingText = 'Loading...!';
   // Bottom Navigation Bar
   static const String home = 'Home';
   static const String cart = 'Cart';
@@ -24,11 +25,26 @@ class AppStrings {
   static const String mostPopular = 'Most Popular';
   static const String newArrivals = 'New Arrivals';
   static const String seeAll = 'See All';
-  // Login Screen
+  // Auth Screens
+  static const String login = 'Login';
+  static const String register = 'Register';
+  static const String name = 'Abdelrahman Nasser';
+  static const String fullName = 'Full Name';
+  static const String email = 'Email';
+  static const String userExample = 'user@example.com';
+  static const String password = 'Password';
+  static const String forgotPassword = 'Forgot Password?';
   static const String createAnAccount = 'Create an Account';
+  static const String goToLogin = 'Go To Login';
+  static const String loginSuccessfully = 'Login Successfully';
+  static const String registeredSuccessfully = 'Registered Successfully';
   static const String guestUser = 'Guest User';
-
-
+  static const String welcomeBack = 'Welcome Back';
+  static const String signInToApex = 'Apex —';
+  static const String unlockTheFuture = 'Your Gateway to the Future';
+  static const String orContinueWith = 'Or continue with';
+  static const String loginWithGoogle = 'Google';
+  static const String loginWithFacebook = 'Facebook';
   // remove cart item
   static const String removeItem = 'Remove Item';
   static const String remove = 'Remove';
@@ -38,6 +54,9 @@ class AppStrings {
   static const String checkout = 'CHECKOUT';
   static const String totalPrice = 'Total Price';
   static const String goToShopping = 'Go To Shopping';
+  static const String itemAdded = 'Item added to cart';
+  static const String itemRemoved = 'Item removed from cart';
+  static const String allItemsCleared = 'All items cleared from cart';
   // Clear Cart items
   static const String clearCart = 'Clear Cart';
   static const String clearAll = 'Clear All';
@@ -50,7 +69,6 @@ class AppStrings {
   static const String signInToAddItems = 'Login to add items to your cart and enjoy a personalized shopping experience.';
   static const String loginRequired = 'Login Required';
   static const String createNewAccount = 'Create new account';
-  static const String login = 'Login';
   // Offers Screen
   static const String noOffers = 'No offers available at the moment.';
   static const String endsIn = 'Ends in:';
@@ -61,10 +79,4 @@ class AppStrings {
   static const String shippingAddress = 'Shipping Address';
   static const String orderSummary = 'Order Summary';
   static const String placeOrder = 'PLACE ORDER';
-
-
-
-
-
-
 }

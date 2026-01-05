@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopx/core/helpers/get_dummy_product.dart';
-import 'package:shopx/core/helpers/show_app_toast.dart';
+import 'package:shopx/core/helpers/show_top_message.dart';
 import 'package:shopx/features/home/latest_products/cubit/latest_products_cubit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'home_latest_products.dart';
@@ -14,7 +14,11 @@ class HomeLatestProductsBlocBuilder extends StatelessWidget {
     return BlocConsumer<LatestProductsCubit, LatestProductsState>(
       listener: (context, state) {
         if (state is LatestProductsError) {
-          showAppToast(message: state.message, bgColor: Colors.red);
+          showTopMessage(
+            context: context,
+            message: state.message,
+            isError: true,
+          );
         }
       },
       builder: (context, state) {

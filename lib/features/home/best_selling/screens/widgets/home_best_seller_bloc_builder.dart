@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopx/core/helpers/get_dummy_product.dart';
-import 'package:shopx/core/helpers/show_app_toast.dart';
+import 'package:shopx/core/helpers/show_top_message.dart';
 import 'package:shopx/features/home/best_selling/cubit/best_selling_products_cubit.dart';
 import 'package:shopx/features/home/best_selling/screens/widgets/home_best_seller.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -14,7 +14,11 @@ class HomeBestSellerBlocBuilder extends StatelessWidget {
     return BlocConsumer<BestSellingProductsCubit, BestSellingProductsState>(
       listener: (context, state) {
         if (state is BestSellingProductsError) {
-          showAppToast(message: state.message, bgColor: Colors.red);
+          showTopMessage(
+            context: context,
+            message: state.message,
+            isError: true,
+          );
         }
       },
       builder: (context, state) {
