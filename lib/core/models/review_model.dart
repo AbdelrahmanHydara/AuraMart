@@ -35,6 +35,16 @@ class ReviewModel {
     );
   }
 
+  factory ReviewModel.fromEntity(ReviewEntity entity) {
+    return ReviewModel(
+      reviewerName: entity.reviewerName,
+      reviewerAvatarUrl: entity.reviewerAvatarUrl,
+      comment: entity.comment,
+      rating: entity.rating,
+      date: entity.date,
+    );
+  }
+
   toJson() {
     return {
       'reviewerName': reviewerName,

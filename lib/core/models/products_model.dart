@@ -52,6 +52,23 @@ class ProductsModel {
     );
   }
 
+  factory ProductsModel.fromEntity(ProductsEntity entity) {
+    return ProductsModel(
+      code: entity.code,
+      name: entity.name,
+      category: entity.category,
+      description: entity.description,
+      price: entity.price,
+      quantity: entity.quantity,
+      discount: entity.discount,
+      oldPrice: entity.oldPrice,
+      imageUrl: entity.imageUrl,
+      sellingCount: 0,
+      createdAt: DateTime.now(),
+      reviews: entity.reviews.map((e) => ReviewModel.fromEntity(e)).toList(),
+    );
+  }
+
   ProductsEntity toEntity() {
     return ProductsEntity(
       code: code,

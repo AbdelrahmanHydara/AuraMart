@@ -60,13 +60,15 @@ class AppStrings {
   // Clear Cart items
   static const String clearCart = 'Clear Cart';
   static const String clearAll = 'Clear All';
-  static const String removeAllItems = 'Are you sure you want to remove all items from your cart ?';
+  static const String removeAllItems =
+      'Are you sure you want to remove all items from your cart ?';
   // Empty Cart
   static const String shopNow = 'Shop Now';
   static const String waitingFor = 'What are you waiting for !!!';
   static const String cartEmpty = 'Your Shopping cart looks empty.';
   // Login to add cart items
-  static const String signInToAddItems = 'Login to add items to your cart and enjoy a personalized shopping experience.';
+  static const String signInToAddItems =
+      'Login to add items to your cart and enjoy a personalized shopping experience.';
   static const String loginRequired = 'Login Required';
   static const String createNewAccount = 'Create new account';
   // Offers Screen
@@ -79,4 +81,12 @@ class AppStrings {
   static const String shippingAddress = 'Shipping Address';
   static const String orderSummary = 'Order Summary';
   static const String placeOrder = 'PLACE ORDER';
+  // Search Screen
+  static const String suggested = 'Suggested for you';
+  static const String clearSearch = 'Clear Search';
+  static const String cancel = 'Cancel';
+  static const String retry = 'Retry';
+  static const String oops = 'Oops! Something went wrong';
+  static const String noFound = 'No Results Found';
+  static const String tryChecking = "We couldn't find what you're looking for. Try checking for typos or search for another product.";
 }
